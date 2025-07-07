@@ -1,0 +1,1930 @@
+[
+      {
+            "album": "Section.80",
+            "n": 16,
+            "img": "https://i.scdn.co/image/ab67616d0000b27333d50ba80791b4ed381f5221",
+            "artist": "Kendrick Lamar",
+            "link": "spotify:album:13WjgUEEAQp0d9JqojlWp1",
+            "toDelete": true
+      },
+      {
+            "album": "The Bells",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736002f6623b5bb8617bcae21d",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:2koeesfmPw1HkDbXZvCOFX",
+            "toDelete": true
+      },
+      {
+            "album": "Sleepless Nights",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b273aca55f818fcd7833c363bb38",
+            "artist": "Neckclippa",
+            "link": "spotify:album:6u2P894k4UEhKHEH82MBnO",
+            "toDelete": false
+      },
+      {
+            "album": "Veteran",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739a8fce763b8a58d7d3e4a7f2",
+            "artist": "JPEGMAFIA",
+            "link": "spotify:album:22LKdgY3vLsAsWrOafwCM3",
+            "toDelete": false
+      },
+      {
+            "album": "InnerSpeaker",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273cbcddf5b9309f972363ae406",
+            "artist": "Tame Impala",
+            "link": "spotify:album:79Ij6ZNKHVFVRNvXoNbvZO",
+            "toDelete": false
+      },
+      {
+            "album": "Drive (Original Motion Picture Soundtrack)",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b2732d5afc57b8290f7d62915e71",
+            "artist": "Various Artists",
+            "link": "spotify:album:5c8OkYLDmxShOqZYG765wA",
+            "toDelete": false
+      },
+      {
+            "album": "Baby Driver (Music from the Motion Picture)",
+            "n": 30,
+            "img": "https://i.scdn.co/image/ab67616d0000b273eb9e0243be71d187e7c8699d",
+            "artist": "Various Artists",
+            "link": "spotify:album:1XaJOcLe3xMQ611SMHtOja",
+            "toDelete": false
+      },
+      {
+            "album": "12 bit Blues",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27385c0c606b4ed31cf01ca2a3c",
+            "artist": "Kid Koala",
+            "link": "spotify:album:1zEEFEr99WZwn4cRKhDRNA",
+            "toDelete": false
+      },
+      {
+            "album": "1992 EP",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ae2f9704f52cf8e4072814dd",
+            "artist": "Ben Khan",
+            "link": "spotify:album:7Br98lMQIA9U89GJz7Z3p7",
+            "toDelete": true
+      },
+      {
+            "album": "2012 - 2017",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2731e50f5b92bba4875bb776756",
+            "artist": "Against All Logic",
+            "link": "spotify:album:1uzfGk9vxMXfaZ2avqwxod",
+            "toDelete": false
+      },
+      {
+            "album": "21",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ba764098164f221484bcc309",
+            "artist": "Adele",
+            "link": "spotify:album:7n3QJc7TBOxXtlYh4Ssll8",
+            "toDelete": false
+      },
+      {
+            "album": "22, A Million",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273011bea9a2b6b25b84a1f611c",
+            "artist": "Bon Iver",
+            "link": "spotify:album:1PgfRdl3lPyACfUGH4pquG",
+            "toDelete": false
+      },
+      {
+            "album": "23",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f55339596dcae36de88abd93",
+            "artist": "Blonde Redhead",
+            "link": "spotify:album:3CRBMstrlbZNVWQjahQACl",
+            "toDelete": false
+      },
+      {
+            "album": "25",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735ffbbc3dca25d5c81491af1f",
+            "artist": "Adele",
+            "link": "spotify:album:7uwTHXmFa1Ebi5flqBosig",
+            "toDelete": false
+      },
+      {
+            "album": "7fingers",
+            "n": 10,
+            "img": "https://i.scdn.co/image/c8b0b888561a0f5f3e126b70a68429696ac75100",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:0nMiBC39mX6fwE96xXKTWA",
+            "toDelete": true
+      },
+      {
+            "album": "A/B",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f793a842c1642b09a768a63b",
+            "artist": "KALEO",
+            "link": "spotify:album:4he4SQup02hEIQdwhZlZlk",
+            "toDelete": false
+      },
+      {
+            "album": "Aboa Sleeping",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d09ddcfe7ea2e00c471be71b",
+            "artist": "Burning Hearts",
+            "link": "spotify:album:1w8rQ5KPgZTOTGUvasAiMs",
+            "toDelete": true
+      },
+      {
+            "album": "Acid Disk",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d687a5d2bdf8887d1774cebc",
+            "artist": "G Jones",
+            "link": "spotify:album:6xbuSjvIF33Hs9YOQK40Od",
+            "toDelete": true
+      },
+      {
+            "album": "ADHD 6",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b27362ce1cd968c6a207ee698136",
+            "artist": "ADHD",
+            "link": "spotify:album:6OoA2e1LaqXoKsjRMz3Adw",
+            "toDelete": false
+      },
+      {
+            "album": "Adhd 7",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b27368625e25853b3f592d6070ff",
+            "artist": "ADHD",
+            "link": "spotify:album:6seMB5KTWBvk6mfRs6zJPl",
+            "toDelete": false
+      },
+      {
+            "album": "\u00c6nima",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b273dce45359981d62e087a29e6f",
+            "artist": "TOOL",
+            "link": "spotify:album:6yWMN087PgSimbcVmHLEwG",
+            "toDelete": false
+      },
+      {
+            "album": "The Age Of The Understatement",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27356e4e3118af9dec4a5670a33",
+            "artist": "The Last Shadow Puppets",
+            "link": "spotify:album:2y3Rm0cT1xbf2NoTQwKv99",
+            "toDelete": true
+      },
+      {
+            "album": "Aleph",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b2731c5d4bfa51d536cb487f3861",
+            "artist": "Gesaffelstein",
+            "link": "spotify:album:3MiiF9utmtGnLVITgl0JP7",
+            "toDelete": false
+      },
+      {
+            "album": "All Encores",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27387eb4f0313c626dbb9a54986",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:5fHIn0grAPQdsjXe7KtSFj",
+            "toDelete": false
+      },
+      {
+            "album": "All Is Violent, All Is Bright (2011 Remastered Edition)",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f682220fac054e88a347a243",
+            "artist": "God Is An Astronaut",
+            "link": "spotify:album:1FNW2D6cUdpOWnV38xuGIT",
+            "toDelete": false
+      },
+      {
+            "album": "All Melody",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c2360de924ba32a9a4334bd7",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:3MH77JVM17CEdDLz374t1e",
+            "toDelete": false
+      },
+      {
+            "album": "All My Heroes Are Cornballs",
+            "n": 18,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c0f5083c53e881de8dec3d70",
+            "artist": "JPEGMAFIA",
+            "link": "spotify:album:5ilsl5R2lGACTnPZMKIp7o",
+            "toDelete": false
+      },
+      {
+            "album": "All Yours",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735aeb7d19a5c1dfd1bd281704",
+            "artist": "Widowspeak",
+            "link": "spotify:album:3P2vcYCOMzyQThpAnmCTi2",
+            "toDelete": true
+      },
+      {
+            "album": "AM",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163",
+            "artist": "Arctic Monkeys",
+            "link": "spotify:album:78bpIziExqiI9qztvNFlQu",
+            "toDelete": false
+      },
+      {
+            "album": "Amnesiac",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b27301b50e75c5aa46fb8ce0cd32",
+            "artist": "Radiohead",
+            "link": "spotify:album:6V9YnBmFjWmXCBaUVRCVXP",
+            "toDelete": true
+      },
+      {
+            "album": "AMOK",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273aa1270979321fba144a09811",
+            "artist": "Atoms For Peace",
+            "link": "spotify:album:6dJZDZMNdBPZrJcNv57bEq",
+            "toDelete": false
+      },
+      {
+            "album": "Amyl and The Sniffers",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2731456d5daba3bf3ede8d2d45c",
+            "artist": "Amyl and The Sniffers",
+            "link": "spotify:album:3GBk3WAGG1mlY8yyskXm2t",
+            "toDelete": false
+      },
+      {
+            "album": "An Ancient Observer",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273452e6766645455516ac7fa37",
+            "artist": "Tigran Hamasyan",
+            "link": "spotify:album:4BEcvKnTOi20mm1foxleMQ",
+            "toDelete": true
+      },
+      {
+            "album": "ANIMA",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273bfcd8d6b28c07d92a902e1c2",
+            "artist": "Thom Yorke",
+            "link": "spotify:album:5a4VSyY7zsfVVqHweYHG7R",
+            "toDelete": false
+      },
+      {
+            "album": "Animalia",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f7857cc64d967e017053e050",
+            "artist": "Mammal Hands",
+            "link": "spotify:album:4y83vqVrHDM6ZVK9oyOjhG",
+            "toDelete": false
+      },
+      {
+            "album": "Apparatus MkII",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734d92ef3234a7ac6922702d15",
+            "artist": "Cassave",
+            "link": "spotify:album:3y05k2UwPixi5xZ2WShoFt",
+            "toDelete": false
+      },
+      {
+            "album": "Artaud",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b27350db5a166ea23d5d6c4cd387",
+            "artist": "Pescado Rabioso",
+            "link": "spotify:album:5MJR9j21vjEi4ODxzhvoTA",
+            "toDelete": true
+      },
+      {
+            "album": "Ask The Dust",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734b5d32acf726a447ca22333e",
+            "artist": "Lorn",
+            "link": "spotify:album:7svyyG79BXUeu9MpWEhfeh",
+            "toDelete": false
+      },
+      {
+            "album": "Asthenos",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736c0696f4810fa8fc7e6dd21d",
+            "artist": "Cassave",
+            "link": "spotify:album:6PtVfx3UrAXybFl0Dxq5AQ",
+            "toDelete": false
+      },
+      {
+            "album": "Asthenos II",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734a349f5fe16ae7dcbb2c43ca",
+            "artist": "Cassave",
+            "link": "spotify:album:0N3YNX7GSpfo2ZlE6gOrqS",
+            "toDelete": false
+      },
+      {
+            "album": "Asymmetry",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735ca9c3342dff01795faec9af",
+            "artist": "Karnivool",
+            "link": "spotify:album:1crPKeUC7ea8UN75kkMDWv",
+            "toDelete": false
+      },
+      {
+            "album": "Attack & Release",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273bd24a1b9cf147aec84249781",
+            "artist": "The Black Keys",
+            "link": "spotify:album:7oIB47BDYNG23PbBwWDv2Z",
+            "toDelete": false
+      },
+      {
+            "album": "ATW",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734c88e1ff7bbd35ab12f3f84e",
+            "artist": "All Them Witches",
+            "link": "spotify:album:29zIQDGwvtcvbaqCISJSMC",
+            "toDelete": false
+      },
+      {
+            "album": "Automatic Writing",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b273902d4082a5f61075e5fed0aa",
+            "artist": "Ataxia",
+            "link": "spotify:album:2W4FYloQ0s0Fb8lKawb0iC",
+            "toDelete": true
+      },
+      {
+            "album": "Autumn Bells",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273cd8c28150afca20ba696ff08",
+            "artist": "Gidge",
+            "link": "spotify:album:0GGP9n1WFDvKLPo8ewdHFi",
+            "toDelete": false
+      },
+      {
+            "album": "An Awesome Wave",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d381b6e0d9ffb31c47080079",
+            "artist": "alt-J",
+            "link": "spotify:album:7HOzvP7Ta2lLueojdlJtdZ",
+            "toDelete": true
+      },
+      {
+            "album": "Aw Ii",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b2730bb829e5209be591dac04032",
+            "artist": "Ataxia",
+            "link": "spotify:album:2JsNeN6Mlx67lgCdPtilKS",
+            "toDelete": false
+      },
+      {
+            "album": "Azure",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736523dd1e3527faa14bcf0da5",
+            "artist": "Vinyl Williams",
+            "link": "spotify:album:06Xc3CWSEiZpKKvyWZ7tzY",
+            "toDelete": true
+      },
+      {
+            "album": "Baantjer Het Begin (Original Film Score)",
+            "n": 26,
+            "img": "https://i.scdn.co/image/ab67616d0000b273af4d916009bef6dd64aebc56",
+            "artist": "Joris Oonk",
+            "link": "spotify:album:7mtt1sBGnY2aBXhGaekAPE",
+            "toDelete": false
+      },
+      {
+            "album": "Baby... You're Bummin' My Life Out In A Supreme Fashion",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273feed33330a46777c23c44b56",
+            "artist": "Thelonious Monster",
+            "link": "spotify:album:0ivYPPjzi4ggt3ENWXpMTl",
+            "toDelete": false
+      },
+      {
+            "album": "Bandana",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733bf3b1061f9f703b0f6bf532",
+            "artist": "Freddie Gibbs",
+            "link": "spotify:album:31KbO7WnDp2AjPdmRTJzdf",
+            "toDelete": false
+      },
+      {
+            "album": "Beats & Saints",
+            "n": 6,
+            "img": "https://i.scdn.co/image/ab67616d0000b27315888c3a248a2ef01da6477b",
+            "artist": "1939 Ensemble",
+            "link": "spotify:album:1olRGDXLhnCB1tSdHdq0W6",
+            "toDelete": true
+      },
+      {
+            "album": "Beat Tape 2",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27304673b3ef017a7581b96e42f",
+            "artist": "Tom Misch",
+            "link": "spotify:album:5IW5ko3B1W5doRD3YH9DV8",
+            "toDelete": true
+      },
+      {
+            "album": "Beekeeper (incl. Home EP)",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b27308e990958a11841e2c39544b",
+            "artist": "Rangleklods",
+            "link": "spotify:album:14vqZaqhxYZ7AYP62iPUo4",
+            "toDelete": true
+      },
+      {
+            "album": "The Bees Made Honey In The Lion's Skull",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273719535a95e9aefe38f2eb7d4",
+            "artist": "Earth",
+            "link": "spotify:album:7JjgvQWsLpIAvwgj2QtxAP",
+            "toDelete": true
+      },
+      {
+            "album": "Belfry",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273404e8516834f8f0d2b0956e3",
+            "artist": "Messa",
+            "link": "spotify:album:23HPlooQIxZSWEHu6aIXfv",
+            "toDelete": false
+      },
+      {
+            "album": "BENT",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27331269fdf23b410be3bee763a",
+            "artist": "Stonefield",
+            "link": "spotify:album:4iXhpRxSVWJJmFOJgsjheL",
+            "toDelete": false
+      },
+      {
+            "album": "The Best Of",
+            "n": 29,
+            "img": "https://i.scdn.co/image/ab67616d0000b273824c66741c7a28fed0c4a376",
+            "artist": "Radiohead",
+            "link": "spotify:album:4wciNwfgbL74SJG9BFlf2R",
+            "toDelete": true
+      },
+      {
+            "album": "Bicep",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d4322a9004288009f6da2975",
+            "artist": "BICEP",
+            "link": "spotify:album:4psDRFbIlUM1KUb1omccXo",
+            "toDelete": true
+      },
+      {
+            "album": "The Big Come Up",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737752288227c24992b41e91b2",
+            "artist": "The Black Keys",
+            "link": "spotify:album:7DDMtj3GwKJ8HHBm18OdKT",
+            "toDelete": false
+      },
+      {
+            "album": "Bitches Brew",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733f29c5269be5a4e9c4611d7a",
+            "artist": "Miles Davis",
+            "link": "spotify:album:3Q0zkOZEOC855ErOOJ1AdO",
+            "toDelete": true
+      },
+      {
+            "album": "Black Focus",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739db63254bf5a8be73bbaed21",
+            "artist": "Yussef Kamaal",
+            "link": "spotify:album:0CAXEcXpruvyGKSTjyLDNu",
+            "toDelete": false
+      },
+      {
+            "album": "Black Pistol Fire",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d4390b4ffae7c240a645d90e",
+            "artist": "Black Pistol Fire",
+            "link": "spotify:album:0EmwFyrOiD5DkGIDzhbOt1",
+            "toDelete": false
+      },
+      {
+            "album": "Black Water Rising",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273473de7349f7bd5f489ba0e9d",
+            "artist": "Black Water Rising",
+            "link": "spotify:album:2yhpvVbfxZURsNXZpOjJ6j",
+            "toDelete": true
+      },
+      {
+            "album": "Blak and Blu",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735a4e89a0c9e6b57c4842ede6",
+            "artist": "Gary Clark Jr.",
+            "link": "spotify:album:0YCTY6KpkPWp2etKx9ZNyM",
+            "toDelete": false
+      },
+      {
+            "album": "Blonde",
+            "n": 17,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c5649add07ed3720be9d5526",
+            "artist": "Frank Ocean",
+            "link": "spotify:album:3mH6qwIy9crq0I9YQbOuDf",
+            "toDelete": false
+      },
+      {
+            "album": "Blood",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733ac4b6a8a567565ab20671ee",
+            "artist": "Rhye",
+            "link": "spotify:album:6yoGOJsTjU7w2amKcUUX7S",
+            "toDelete": false
+      },
+      {
+            "album": "Blood Sugar Sex Magik (Deluxe Edition)",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b273153d79816d853f2694b2cc70",
+            "artist": "Red Hot Chili Peppers",
+            "link": "spotify:album:30Perjew8HyGkdSmqguYyg",
+            "toDelete": false
+      },
+      {
+            "album": "Blue Madonna",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27358604fafc5b974b3e04b887b",
+            "artist": "B\u00d8RNS",
+            "link": "spotify:album:4pF1FraXxBCOD8KbWsO7Fr",
+            "toDelete": false
+      },
+      {
+            "album": "Bon Iver",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f68c287d90dce06539309986",
+            "artist": "Bon Iver",
+            "link": "spotify:album:7pTARJYCVO49nFXB1Mo5re",
+            "toDelete": false
+      },
+      {
+            "album": "BORN LIKE THIS (Redux)",
+            "n": 22,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736a36e4983c623d9793ce8d8b",
+            "artist": "MF DOOM",
+            "link": "spotify:album:6AviMNhTggWeJJ0sFCsc5g",
+            "toDelete": true
+      },
+      {
+            "album": "Boy King",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2732b621f34eb398352d7bb6eef",
+            "artist": "Wild Beasts",
+            "link": "spotify:album:4kL8AfsxFmodxzdtknDAmV",
+            "toDelete": true
+      },
+      {
+            "album": "Brain Cycles",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27393fca776d326ff6460bcd0f3",
+            "artist": "Radio Moscow",
+            "link": "spotify:album:7BpKrz38kMmgSTLrRU17ZO",
+            "toDelete": true
+      },
+      {
+            "album": "Breaking English",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273743f5e5180a95e7d50e28a1c",
+            "artist": "Rafiq Bhatia",
+            "link": "spotify:album:7epPpZENu53f1hkgI0JXX3",
+            "toDelete": true
+      },
+      {
+            "album": "Broken People",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b27382a37c13b1ec6c4ab37b28e3",
+            "artist": "Muddy Magnolias",
+            "link": "spotify:album:3MIBce2g1BNk3mUuj10Ylr",
+            "toDelete": true
+      },
+      {
+            "album": "Brothers",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b273b1734866c6b6e994102176a6",
+            "artist": "The Black Keys",
+            "link": "spotify:album:0glJnyA8SbcP5G2vtPDMNB",
+            "toDelete": false
+      },
+      {
+            "album": "Brown Sugar",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273aad38ef82146467dc999afcf",
+            "artist": "D'Angelo",
+            "link": "spotify:album:1Owp8VOaFEk4r7zkvGOHmE",
+            "toDelete": false
+      },
+      {
+            "album": "Bryter Layter",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738aed3e0fbb3640b759394435",
+            "artist": "Nick Drake",
+            "link": "spotify:album:7w9Og10Tdkh3nqrVD1D5IW",
+            "toDelete": false
+      },
+      {
+            "album": "Bubble Gum",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734654c2878001bd8d7a7ae2ce",
+            "artist": "De Staat",
+            "link": "spotify:album:5c2ZaqcQA4nXNF7Gz8ibXj",
+            "toDelete": false
+      },
+      {
+            "album": "Built on Glass",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273287af0e46fe70c8dc6c47609",
+            "artist": "Chet Faker",
+            "link": "spotify:album:2ytxqdwQ0Hn9JeQmcIWHuh",
+            "toDelete": true
+      },
+      {
+            "album": "By Absence of the Sun",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273df10f340627ebe0e2eadac08",
+            "artist": "Triggerfinger",
+            "link": "spotify:album:2PH4H2Szl1e3xIEdpH5DKR",
+            "toDelete": true
+      },
+      {
+            "album": "By the Way (Deluxe Edition)",
+            "n": 18,
+            "img": "https://i.scdn.co/image/ab67616d0000b273de1af2785a83cc660155a0c4",
+            "artist": "Red Hot Chili Peppers",
+            "link": "spotify:album:6deiaArbeoqp1xPEGdEKp1",
+            "toDelete": false
+      },
+      {
+            "album": "Californication (Deluxe Edition)",
+            "n": 18,
+            "img": "https://i.scdn.co/image/ab67616d0000b27394d08ab63e57b0cae74e8595",
+            "artist": "Red Hot Chili Peppers",
+            "link": "spotify:album:2Y9IRtehByVkegoD7TcLfi",
+            "toDelete": false
+      },
+      {
+            "album": "Caustic",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273cd055dfd086ace02135f0bb5",
+            "artist": "Primitive Man",
+            "link": "spotify:album:7jgBTDv98zf3RuEOtHOcit",
+            "toDelete": true
+      },
+      {
+            "album": "Caustic Love",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273eee34366abb293c4e1511779",
+            "artist": "Paolo Nutini",
+            "link": "spotify:album:0DnxCSZdeApVBVfcWsm3IJ",
+            "toDelete": false
+      },
+      {
+            "album": "Ceremony",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a7a6a65f1ad8a4e89efc0d68",
+            "artist": "Anna von Hausswolff",
+            "link": "spotify:album:3VTpW2O5SBvcn7T0D3bgCg",
+            "toDelete": true
+      },
+      {
+            "album": "Chapter 7",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b273bc73c5685f1b82dd3c664610",
+            "artist": "Ezra Collective",
+            "link": "spotify:album:0xAT19PSU54ExVPjdt2kTI",
+            "toDelete": true
+      },
+      {
+            "album": "Cherry Bomb",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273e4bf0d3d9e0224a30ca5f665",
+            "artist": "Tyler, The Creator",
+            "link": "spotify:album:621OhgnZJ7Pz8iUazct1In",
+            "toDelete": false
+      },
+      {
+            "album": "The Chocolate Wheelchair Album",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739fc8af96c45d254274f55b8f",
+            "artist": "Venetian Snares",
+            "link": "spotify:album:3yrEiWy8NrJaIrAmLpBceh",
+            "toDelete": false
+      },
+      {
+            "album": "The Cinematic Orchestra presents In Motion #1",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273fd4bcf115aec1b5195ed6d0a",
+            "artist": "The Cinematic Orchestra",
+            "link": "spotify:album:1u2MIONeSkVJDGC2Ft3efs",
+            "toDelete": true
+      },
+      {
+            "album": "Circle",
+            "n": 28,
+            "img": "https://i.scdn.co/image/ab67616d0000b273684a9f45a7671e6eafa74b5c",
+            "artist": "Cassave",
+            "link": "spotify:album:4BzwNOdtyHmCGimBogaCjF",
+            "toDelete": false
+      },
+      {
+            "album": "Classics",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b27366ffa2ff8b13d6c4cd301350",
+            "artist": "Aphex Twin",
+            "link": "spotify:album:3SLSq9tzQ8Wq8RWuo0MaXG",
+            "toDelete": false
+      },
+      {
+            "album": "Cocoon",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c26b9e838fcf1b2f0270cdbd",
+            "artist": "Death Machine",
+            "link": "spotify:album:2wCPFj8FWCZvgKRgv9BWPN",
+            "toDelete": false
+      },
+      {
+            "album": "Collapse EP",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733feb53151799913991ef9cd6",
+            "artist": "Aphex Twin",
+            "link": "spotify:album:3SbGxJVC8fHv41RFKCGIl3",
+            "toDelete": false
+      },
+      {
+            "album": "Coming Home",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27369101a9ff9d0653a753eab10",
+            "artist": "Leon Bridges",
+            "link": "spotify:album:4svLfrPPk2npPVuI4kXPYg",
+            "toDelete": true
+      },
+      {
+            "album": "Commune",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273291dc5804eed2c5217e0e968",
+            "artist": "Goat",
+            "link": "spotify:album:4eqEZQ7gGH2HrqRks6TEEH",
+            "toDelete": false
+      },
+      {
+            "album": "Conatus",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737820fc91d8c88dc568244691",
+            "artist": "Joep Beving",
+            "link": "spotify:album:3qPX9UNS4kdWpouc7c5FCa",
+            "toDelete": true
+      },
+      {
+            "album": "Congrats",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ba6b61dc9ce12d0627cb7143",
+            "artist": "Holy Fuck",
+            "link": "spotify:album:40LUGF0CMjrqJ3nSE4ebQi",
+            "toDelete": true
+      },
+      {
+            "album": "Con Todo El Mundo",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737b686e6ccbe43137ae1e9d27",
+            "artist": "Khruangbin",
+            "link": "spotify:album:5u103bJ7EsNUAyL9eMACo5",
+            "toDelete": false
+      },
+      {
+            "album": "Creed II: The Album",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b273e8230123dfe625c953eabae2",
+            "artist": "Mike WiLL Made-It",
+            "link": "spotify:album:7kSa9AwcDQ6ZUScaXxp8zP",
+            "toDelete": true
+      },
+      {
+            "album": "Cruel Practice",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b273006b15a48cb839871aaecf17",
+            "artist": "Shygirl",
+            "link": "spotify:album:1mRbF3hmRjIfAp4euZngIn",
+            "toDelete": true
+      },
+      {
+            "album": "Currents",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79",
+            "artist": "Tame Impala",
+            "link": "spotify:album:79dL7FLiJFOO0EoehUHQBv",
+            "toDelete": true
+      },
+      {
+            "album": "Curtains",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739a5f34517e3b55324e523a73",
+            "artist": "John Frusciante",
+            "link": "spotify:album:6AYmDehwZ164cvy1WzQvwW",
+            "toDelete": false
+      },
+      {
+            "album": "DAMN.",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699",
+            "artist": "Kendrick Lamar",
+            "link": "spotify:album:4eLPsYPBmXABThSJ821sqY",
+            "toDelete": true
+      },
+      {
+            "album": "Danse",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b27314a95efacf0bd2e5fcbae008",
+            "artist": "Colin Vallon",
+            "link": "spotify:album:1QiKDbidxztMpY00OtQbLs",
+            "toDelete": false
+      },
+      {
+            "album": "The Dark Side Of The Moon (2011 Remastered Version)",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d3709135d1005baa36939d80",
+            "artist": "Pink Floyd",
+            "link": "spotify:album:2WT1pbYjLJciAR26yMebkH",
+            "toDelete": false
+      },
+      {
+            "album": "Dawn",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a4b80051b82a4fbdf9ec4d59",
+            "artist": "RY X",
+            "link": "spotify:album:0ht6cjokjU8Xhwj6uABgfO",
+            "toDelete": false
+      },
+      {
+            "album": "Dead Limit",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b2730d2b17620118399e0134f17e",
+            "artist": "Noisia",
+            "link": "spotify:album:67RahkVaNI1yaCSYBKL5Ij",
+            "toDelete": false
+      },
+      {
+            "album": "Deadwing",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a768c1cfcdd97b345fe7f4bc",
+            "artist": "Porcupine Tree",
+            "link": "spotify:album:5FSmyLosroHbPAqF7WX5Na",
+            "toDelete": true
+      },
+      {
+            "album": "Deceiver",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733bdae3719124f5f749feb9c5",
+            "artist": "DIIV",
+            "link": "spotify:album:66aYL3AZPfk6leHxlJDYQ0",
+            "toDelete": false
+      },
+      {
+            "album": "Desiderium",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273b0132092889bf105d447be17",
+            "artist": "TOKiMONSTA",
+            "link": "spotify:album:4QuF7MtyR1UKrbSBB20oes",
+            "toDelete": true
+      },
+      {
+            "album": "Detrimentalist",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2730e2c4c20a710e21006f48a85",
+            "artist": "Venetian Snares",
+            "link": "spotify:album:22ROkFoaAZh0jeM2QhASP3",
+            "toDelete": false
+      },
+      {
+            "album": "diezel ep",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739fc757a9cd1da87f9b145235",
+            "artist": "Hubert Daviz",
+            "link": "spotify:album:2fOrpCIBA6uVDpFbaVCuH3",
+            "toDelete": true
+      },
+      {
+            "album": "Dim",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b273bd9778008956d293e8bb0ee7",
+            "artist": "Aparde",
+            "link": "spotify:album:2qqXB4p66JZ0Dg2mZx4ynV",
+            "toDelete": true
+      },
+      {
+            "album": "The Distance To Here",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273442aaaae1a1786209902f004",
+            "artist": "Live",
+            "link": "spotify:album:5ekcd7RoYHBHGhjUGNXAsU",
+            "toDelete": false
+      },
+      {
+            "album": "Doni Doni",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273faad3398d4bd1a189b863db5",
+            "artist": "Erik Truffaz",
+            "link": "spotify:album:1P4lB9iNcYxH64qLnL5fyI",
+            "toDelete": true
+      },
+      {
+            "album": "Dopamine",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273cc2cf912462d8ae4ef856434",
+            "artist": "B\u00d8RNS",
+            "link": "spotify:album:17l7MIu0Jh0tdgK7or9ovw",
+            "toDelete": true
+      },
+      {
+            "album": "Do You Know Squarepusher",
+            "n": 17,
+            "img": "https://i.scdn.co/image/ab67616d0000b27375dd68a6edcbf4ec822ce32d",
+            "artist": "Squarepusher",
+            "link": "spotify:album:2E1b73aV55wbSSc2Cd7hmX",
+            "toDelete": false
+      },
+      {
+            "album": "Dreams",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27325958dbeb1d54e950e5aa888",
+            "artist": "The Whitest Boy Alive",
+            "link": "spotify:album:51sGMJiAuHrj9VqmUOvyPn",
+            "toDelete": true
+      },
+      {
+            "album": "Drive Streaming Edition (Original Motion Picture Soundtrack)",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b27302378240630d8d5167175af3",
+            "artist": "Various Artists",
+            "link": "spotify:album:35mr1qH94Izq6zUIBUlm6O",
+            "toDelete": true
+      },
+      {
+            "album": "DROWN THE TRAITOR WITHIN",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a5d9ab3221753ac72fe88146",
+            "artist": "Lorn",
+            "link": "spotify:album:2uklDAcvToQNqI00RHVL6M",
+            "toDelete": true
+      },
+      {
+            "album": "Duran Duran",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735d11c2fe73a7d376d3b06107",
+            "artist": "Duran Duran",
+            "link": "spotify:album:0PqCkTvKFJxzr9uujq7a3T",
+            "toDelete": false
+      },
+      {
+            "album": "Dust My Broom",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f130324c04a30ca2eadb6d6f",
+            "artist": "Boozoo Bajou",
+            "link": "spotify:album:1FxtYGZrUKHVAtdvElP55d",
+            "toDelete": true
+      },
+      {
+            "album": "Dusty In Memphis",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b273e20037311210924b3c386f00",
+            "artist": "Dusty Springfield",
+            "link": "spotify:album:5FRB5oQaHxlDNe6gMGuzu2",
+            "toDelete": false
+      },
+      {
+            "album": "Dying Surfer Meets His Maker",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273642b85699a3a946ccf96da8d",
+            "artist": "All Them Witches",
+            "link": "spotify:album:1wtG05tm8KwrE03Zqh5I2b",
+            "toDelete": false
+      },
+      {
+            "album": "Early Worx",
+            "n": 17,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738f7ba17053a53eebb6e620e6",
+            "artist": "trentem\u00f8ller",
+            "link": "spotify:album:2oy8IScMkt6ut0pVy53Bhb",
+            "toDelete": false
+      },
+      {
+            "album": "Echoes, Silence, Patience & Grace",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27383e260c313dc1ff1f17909cf",
+            "artist": "Foo Fighters",
+            "link": "spotify:album:3ilXDEG0xiajK8AbqboeJz",
+            "toDelete": false
+      },
+      {
+            "album": "Elaenia",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b2730f7bcb70b9b7dc632be51756",
+            "artist": "Floating Points",
+            "link": "spotify:album:0SDLAAGQmK8DWxkX0s9OGE",
+            "toDelete": true
+      },
+      {
+            "album": "El Camino",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736a21b97de47168df4f0c1993",
+            "artist": "The Black Keys",
+            "link": "spotify:album:5DLhV9yOvZ7IxVmljMXtNm",
+            "toDelete": false
+      },
+      {
+            "album": "Electric Ladyland",
+            "n": 16,
+            "img": "https://i.scdn.co/image/ab67616d0000b273522088789d49e216d9818292",
+            "artist": "Jimi Hendrix",
+            "link": "spotify:album:5z090LQztiqh13wYspQvKQ",
+            "toDelete": false
+      },
+      {
+            "album": "Emergence",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a24eb1aa0c049e3ca5f0b162",
+            "artist": "Max Cooper",
+            "link": "spotify:album:26vmJ6CjPxYWYYa2B4d9my",
+            "toDelete": false
+      },
+      {
+            "album": "The Empyrean",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273833104647f596f77a3a6aa5f",
+            "artist": "John Frusciante",
+            "link": "spotify:album:5ZLnZ8o2xA2cmSPYtqExl1",
+            "toDelete": false
+      },
+      {
+            "album": "Encores 1",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a8231ba4d11a58263004334e",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:7rnL74Ga4HeANxxOptkeu1",
+            "toDelete": false
+      },
+      {
+            "album": "Energy Trance Ep",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c39d2dae0da4d6907daa3b41",
+            "artist": "Komakino",
+            "link": "spotify:album:7wIacppYfHNEvAxpC1LcFl",
+            "toDelete": true
+      },
+      {
+            "album": "Entity",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273e23e6f87ef3ce0fce3176146",
+            "artist": "Oscar and the Wolf",
+            "link": "spotify:album:2LxwswPxCBQhIIq3KUP1nL",
+            "toDelete": true
+      },
+      {
+            "album": "EODM Presents Boots Electric Performing The Best Songs We Never Wrote",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f2043a8942328bc21e24ffc9",
+            "artist": "Eagles Of Death Metal",
+            "link": "spotify:album:5d29OqDudaM61AKpzIUA4P",
+            "toDelete": true
+      },
+      {
+            "album": "Equilibrium",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ef0d53b9d75c301ef434ba44",
+            "artist": "Erik Mongrain",
+            "link": "spotify:album:0HVXSn0pf3BdO296SDnMTj",
+            "toDelete": true
+      },
+      {
+            "album": "The Essential Joe Satriani",
+            "n": 30,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c3a7f0169d661e0cbf6f3bec",
+            "artist": "Joe Satriani",
+            "link": "spotify:album:0zyZiSF8MmvDQVK8jor838",
+            "toDelete": true
+      },
+      {
+            "album": "EUROMANTIC001",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736cb4a51c5f41c25face10a1b",
+            "artist": "Niki Istrefi",
+            "link": "spotify:album:7wz6ruHjmHTSmAyj2jiZ07",
+            "toDelete": true
+      },
+      {
+            "album": "Everybody",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736cfd3d4d9dbe353323190910",
+            "artist": "Logic",
+            "link": "spotify:album:1sweBli5bv5QIothRFFMsf",
+            "toDelete": true
+      },
+      {
+            "album": "Every Valley",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d9df96fdb161a9a71138b344",
+            "artist": "Public Service Broadcasting",
+            "link": "spotify:album:3a33Xlh3zCHxs1hOlGTzMz",
+            "toDelete": true
+      },
+      {
+            "album": "Expectations",
+            "n": 6,
+            "img": "https://i.scdn.co/image/ab67616d0000b27332bd6ad7d1c3d1debe954442",
+            "artist": "Harvey Sutherland",
+            "link": "spotify:album:5oTMzdANxu24nu2YXJPHDw",
+            "toDelete": true
+      },
+      {
+            "album": "Expedition Vol. 4: Nights",
+            "n": 22,
+            "img": "https://i.scdn.co/image/ab67616d0000b27353e31ccfd1efb3c111c46180",
+            "artist": "kyng smog",
+            "link": "spotify:album:62GpIOKDt7faKPGsD2IBGd",
+            "toDelete": false
+      },
+      {
+            "album": "Ex:Re",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738540914096892578d118508d",
+            "artist": "Ex:Re",
+            "link": "spotify:album:3i7m2ZYeR1LMVqWxe0y8og",
+            "toDelete": false
+      },
+      {
+            "album": "The Eyes",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b27381b75568ca82870df53a282d",
+            "artist": "Regal",
+            "link": "spotify:album:25vxOTaMCphfuAa6Hcvzkz",
+            "toDelete": false
+      },
+      {
+            "album": "Fallen Angels (The Singles Collection)",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a5cb1f39fee7d683ca7dfd9c",
+            "artist": "The Heliocentrics",
+            "link": "spotify:album:3Omuoy2g3BW9QyzTK1yPew",
+            "toDelete": true
+      },
+      {
+            "album": "Fated",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735d5f741a474fb7bad3a69885",
+            "artist": "Nosaj Thing",
+            "link": "spotify:album:4XJEjIbW9jnMMyjHMfM4OX",
+            "toDelete": true
+      },
+      {
+            "album": "Favourite Worry",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ac09468ed8f6afa28bf6a5d2",
+            "artist": "The Milk",
+            "link": "spotify:album:53S4enAsn6gtchii2UmOke",
+            "toDelete": true
+      },
+      {
+            "album": "Fear Inoculum",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27326e6b6f666ef40b6b8365e3e",
+            "artist": "TOOL",
+            "link": "spotify:album:7acEciVtnuTzmwKptkjth5",
+            "toDelete": false
+      },
+      {
+            "album": "The Fearless Flyers",
+            "n": 6,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f3428bace12b87810d48074a",
+            "artist": "The Fearless Flyers",
+            "link": "spotify:album:6O6g0eMsafZe1UWHfENhSL",
+            "toDelete": false
+      },
+      {
+            "album": "Feast for Water",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737a44e14d2003d3902629d099",
+            "artist": "Messa",
+            "link": "spotify:album:7xLqM5cY5WwLHV0GZ6OKkF",
+            "toDelete": false
+      },
+      {
+            "album": "Felt",
+            "n": 9,
+            "img": "https://i.scdn.co/image/be2cd97b1651e0f2d947f1a88a3bd28a1ee8095b",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:7vfLaNMsJSCHNiDfSHICXz",
+            "toDelete": false
+      },
+      {
+            "album": "A Fever Dream",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2731caa47664d543d1581521b6a",
+            "artist": "Everything Everything",
+            "link": "spotify:album:3HgJKevoR2WowpaGSbT37z",
+            "toDelete": false
+      },
+      {
+            "album": "Fight For My Soul",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2731fae033a7f8835c8a438b58b",
+            "artist": "Jonny Lang",
+            "link": "spotify:album:73fiDsMIlLoMSMhZW4daUA",
+            "toDelete": false
+      },
+      {
+            "album": "Filmmuzik 1 + Ambient Works V1",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734acbf98975fc1629ab20341f",
+            "artist": "Zero Bedroom Apartment",
+            "link": "spotify:album:6eGYOc4AAIXZWZhuHjHJ7k",
+            "toDelete": true
+      },
+      {
+            "album": "Fink\u2019s Sunday Night Blues Dubs",
+            "n": 5,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d959633efea0a9acb19a6191",
+            "artist": "Fink",
+            "link": "spotify:album:5makYuzjjfRamkkCw0wYHP",
+            "toDelete": false
+      },
+      {
+            "album": "Fire And Water",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273753c41c7fdc5e78ba017bbf5",
+            "artist": "Free",
+            "link": "spotify:album:1ydlm89JR8cV8VuSaNvHNL",
+            "toDelete": false
+      },
+      {
+            "album": "Fire by the Silos",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c3f7a7f06874ffaa6fa253d7",
+            "artist": "Toska",
+            "link": "spotify:album:4qcet5SabI4DnWiSXHNvjM",
+            "toDelete": false
+      },
+      {
+            "album": "First",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c98f563ac0d9edfb05904d2f",
+            "artist": "Liss",
+            "link": "spotify:album:1CNq2KSEpG6uhhay12k67n",
+            "toDelete": false
+      },
+      {
+            "album": "Fishing For Fishies",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273fe260f78e134462eeb4583ba",
+            "artist": "King Gizzard & The Lizard Wizard",
+            "link": "spotify:album:4Tgecn5UTVK57G0IV3MyB6",
+            "toDelete": false
+      },
+      {
+            "album": "Five Leaves Left",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735f92ac7bb06cdc38eaadc01e",
+            "artist": "Nick Drake",
+            "link": "spotify:album:5zau80zbjOc2uEO5P1olK1",
+            "toDelete": false
+      },
+      {
+            "album": "Floa",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273cccbef888bc2d1745b3458a9",
+            "artist": "Mammal Hands",
+            "link": "spotify:album:2Ua7bVJnCpzcfqChuUBgZY",
+            "toDelete": false
+      },
+      {
+            "album": "Flying Microtonal Banana",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ffea9482bfd03a047ea8ca7d",
+            "artist": "King Gizzard & The Lizard Wizard",
+            "link": "spotify:album:0BJrif4AO6vWEtLRYYC3T2",
+            "toDelete": false
+      },
+      {
+            "album": "Foregrow",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f650f90d6673c52623fcdd39",
+            "artist": "John Frusciante",
+            "link": "spotify:album:2iWnQ16vaspe5N9OTi3o3z",
+            "toDelete": true
+      },
+      {
+            "album": "For Emma, Forever Ago",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736930babcd1f07e9def9e77b0",
+            "artist": "Bon Iver",
+            "link": "spotify:album:2JLDMOX168DhnueBb946kw",
+            "toDelete": false
+      },
+      {
+            "album": "For Ever",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ed7161514b659102e49bb589",
+            "artist": "Jungle",
+            "link": "spotify:album:1VZxGX1lzF1QjY5QofhC5r",
+            "toDelete": true
+      },
+      {
+            "album": "For Lack Of A Better Name",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d49d976721f4dc6b3c6225ad",
+            "artist": "deadmau5",
+            "link": "spotify:album:6WJvrBlL3zgu4mVoKyvMkl",
+            "toDelete": false
+      },
+      {
+            "album": "Fraggle Rock - Do It on My Own",
+            "n": 20,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733b4aede11db21ba74df9a2af",
+            "artist": "Various Artists",
+            "link": "spotify:album:1heuSSWVmflyX0y0wxnW5v",
+            "toDelete": true
+      },
+      {
+            "album": "From the Ages",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737724dc5ec1e0e56daa627cfd",
+            "artist": "Earthless",
+            "link": "spotify:album:3bv7hBgSjgcyo3Tj2P3nYS",
+            "toDelete": false
+      },
+      {
+            "album": "From Voodoo to Zen",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273e50241e7adfa2bce4b50e7ef",
+            "artist": "Tides From Nebula",
+            "link": "spotify:album:3kxzriTUAvJklocJHG7GH8",
+            "toDelete": false
+      },
+      {
+            "album": "Full Of It",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d1f5e29f98d2e01d06154cd9",
+            "artist": "Summer Cannibals",
+            "link": "spotify:album:2nor5RpbbAn1OzhTwHq8vf",
+            "toDelete": true
+      },
+      {
+            "album": "Funkadelic",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b27358cae2d5e805953be77ed893",
+            "artist": "Funkadelic",
+            "link": "spotify:album:2aIcXqVxovDv2AixaZiskz",
+            "toDelete": false
+      },
+      {
+            "album": "The Gamble",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738a8875c650045e8d2ad76dbe",
+            "artist": "Nonkeen",
+            "link": "spotify:album:6OiYGUW5x94NZ1HDafHjor",
+            "toDelete": false
+      },
+      {
+            "album": "The Garden",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b27363a4651c5579c8528946b03e",
+            "artist": "Zero 7",
+            "link": "spotify:album:5eqHucyy09GuijWam8RAja",
+            "toDelete": false
+      },
+      {
+            "album": "Gece",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27354f6526cabbf2c0c3db8eb61",
+            "artist": "Altin G\u00fcn",
+            "link": "spotify:album:4IUeKh2mYOX2njthGA8STM",
+            "toDelete": false
+      },
+      {
+            "album": "Get To Heaven (Deluxe)",
+            "n": 17,
+            "img": "https://i.scdn.co/image/ab67616d0000b273889741e4d5cfc40e4610770c",
+            "artist": "Everything Everything",
+            "link": "spotify:album:1oScYOf8ImO6L9bdvhep1J",
+            "toDelete": false
+      },
+      {
+            "album": "GINGER",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27346f07fa4f28bf824840ddacb",
+            "artist": "BROCKHAMPTON",
+            "link": "spotify:album:1jToVugwBEzcak8gJNZG2f",
+            "toDelete": true
+      },
+      {
+            "album": "A Girl Between Two Worlds",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d195df78d4d4f79d0c7991c0",
+            "artist": "Fatima Yamaha",
+            "link": "spotify:album:44vJS1bcS3vy1Ciaf3o1Z9",
+            "toDelete": false
+      },
+      {
+            "album": "Given To The Wild",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b27399248dc9a56d9c3332e8f577",
+            "artist": "The Maccabees",
+            "link": "spotify:album:4Kp0ABJPotf4Ufivi4J3EZ",
+            "toDelete": false
+      },
+      {
+            "album": "Give You The Ghost",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273840d2652e4c7bcb2c849332b",
+            "artist": "POLI\u00c7A",
+            "link": "spotify:album:5zAuXuDKnbv7TxUHJzitKd",
+            "toDelete": false
+      },
+      {
+            "album": "Goddess",
+            "n": 6,
+            "img": "https://i.scdn.co/image/ab67616d0000b27365213a1199c918ff8df183c7",
+            "artist": "Chrome Sparks",
+            "link": "spotify:album:252x6axgOKxPsoNYN5Bp7d",
+            "toDelete": true
+      },
+      {
+            "album": "Go Hawaii",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27377ef0c75d226c525d58bbe68",
+            "artist": "Casino Versus Japan",
+            "link": "spotify:album:2SFa8HE0rTBYFHDNsebPl1",
+            "toDelete": true
+      },
+      {
+            "album": "Gold",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734d769d1f6fba24f27ab9b241",
+            "artist": "Whores",
+            "link": "spotify:album:4AjVHhcGqDUppB7kxCYXxo",
+            "toDelete": false
+      },
+      {
+            "album": "Golem",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273acc47ac07205092f526d0081",
+            "artist": "Wand",
+            "link": "spotify:album:5ZTqzCCjEF5pwSnr6o7Jga",
+            "toDelete": false
+      },
+      {
+            "album": "Good Girl Gone Bad: Reloaded",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f9f27162ab1ed45b8d7a7e98",
+            "artist": "Rihanna",
+            "link": "spotify:album:3JSWZWeTHF4HDGt5Eozdy7",
+            "toDelete": true
+      },
+      {
+            "album": "good kid, m.A.A.d city (Deluxe)",
+            "n": 17,
+            "img": "https://i.scdn.co/image/ab67616d0000b27378de8b28de36a74afc0348b5",
+            "artist": "Kendrick Lamar",
+            "link": "spotify:album:748dZDqSZy6aPXKcI9H80u",
+            "toDelete": false
+      },
+      {
+            "album": "The Grand Pecking Order",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b27353cd79d225989e938e5160c9",
+            "artist": "Oysterhead",
+            "link": "spotify:album:1CQ44PqZa4hAkSu98GdOvm",
+            "toDelete": true
+      },
+      {
+            "album": "The Great and Unique. Soviet Films Music. Osennij Marafon",
+            "n": 18,
+            "img": "https://i.scdn.co/image/ab67616d0000b273b47e69312d137bce0c80f202",
+            "artist": "Andrei Petrov",
+            "link": "spotify:album:3jejk9ivnAxrTSDAaI5RCE",
+            "toDelete": true
+      },
+      {
+            "album": "Greatest Hits",
+            "n": 16,
+            "img": "https://i.scdn.co/image/ab67616d0000b273136d7250568820409f8fdd60",
+            "artist": "Foo Fighters",
+            "link": "spotify:album:1zCNrbPpz5OLSr6mSpPdKm",
+            "toDelete": false
+      },
+      {
+            "album": "Green Twins",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737c895c6bd974d10d53361638",
+            "artist": "Nick Hakim",
+            "link": "spotify:album:6booRahW0CwbWrAkv0cYs9",
+            "toDelete": true
+      },
+      {
+            "album": "Gumboot Soup",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c1356ac35c9600661c75c5d9",
+            "artist": "King Gizzard & The Lizard Wizard",
+            "link": "spotify:album:4TKNK51FGyUaBt98lsU2BF",
+            "toDelete": false
+      },
+      {
+            "album": "Half Age EP",
+            "n": 7,
+            "img": "https://i.scdn.co/image/ab67616d0000b273686ac5154c3f7b0180234055",
+            "artist": "Weval",
+            "link": "spotify:album:47mFpUDunR1rckC31EBT0g",
+            "toDelete": false
+      },
+      {
+            "album": "Harry Hard-On",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739991bb7e39741c951aca3b2b",
+            "artist": "Allan Rayman",
+            "link": "spotify:album:1eN0asiUp2OoMuRkI61cmm",
+            "toDelete": true
+      },
+      {
+            "album": "The Healer",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b27366f3b63ebb12f1822b299da7",
+            "artist": "Charlotte de Witte",
+            "link": "spotify:album:1894OrUjsd4SHx8OXUBDXg",
+            "toDelete": false
+      },
+      {
+            "album": "Hear Me Out",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2733d7eddd9401e833c32809674",
+            "artist": "Reignwolf",
+            "link": "spotify:album:6jPxwvFm0kcZzflrloQPuK",
+            "toDelete": false
+      },
+      {
+            "album": "Heatwave",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738de4bd453ae97fe82023affe",
+            "artist": "Trapped Under Ice",
+            "link": "spotify:album:0GhdmfdrNDlTwWDvruRkWr",
+            "toDelete": false
+      },
+      {
+            "album": "Help Us Stranger",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ab35d4000fc5f672d37a90f4",
+            "artist": "The Raconteurs",
+            "link": "spotify:album:39zeEZzWt1tqrMY1D8JlQI",
+            "toDelete": true
+      },
+      {
+            "album": "Het Is",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739941f14bdfac8780afd20195",
+            "artist": "Eefje de Visser",
+            "link": "spotify:album:1Yc0HbRlIZwaOY9jGpxMY5",
+            "toDelete": false
+      },
+      {
+            "album": "Highlights",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ad72c9e6263e60bf1b95e5e2",
+            "artist": "California Guitar Trio",
+            "link": "spotify:album:6jNHa2UqUit3p6Thl0lX55",
+            "toDelete": true
+      },
+      {
+            "album": "Hill Climber",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27347fc9a4dd73f3a28ee278d7c",
+            "artist": "Vulfpeck",
+            "link": "spotify:album:23jJjnLWnkYfK7E50Kmbcm",
+            "toDelete": true
+      },
+      {
+            "album": "Hollow Ponds",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2739c9e50d9796ee5e06cf0012f",
+            "artist": "Astronauts",
+            "link": "spotify:album:4OPfD8h4XUhT9SUrflbEJY",
+            "toDelete": false
+      },
+      {
+            "album": "How Did We Get So Dark?",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27394b63000190c83e4dc4ea064",
+            "artist": "Royal Blood",
+            "link": "spotify:album:3Rz6kF8eGqrDOEteo5YsBj",
+            "toDelete": true
+      },
+      {
+            "album": "How's Your Process? (Work)",
+            "n": 6,
+            "img": "https://i.scdn.co/image/ab67616d0000b273b1a9643f87aa31e2cbbac01a",
+            "artist": "Dot Hacker",
+            "link": "spotify:album:26QmPEHnWvpqUwJLQ4igze",
+            "toDelete": false
+      },
+      {
+            "album": "Human",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d28f2f061e2bd8d6d4b81824",
+            "artist": "Aquilo",
+            "link": "spotify:album:56uiKZ5rXiaHFjDzSzRII4",
+            "toDelete": true
+      },
+      {
+            "album": "Hydroponic Garden (2015 Remaster)",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c9619f11bf1202d7bc684e0f",
+            "artist": "Carbon Based Lifeforms",
+            "link": "spotify:album:4ZkNd9ALV3jkWmoZ9Um3lP",
+            "toDelete": true
+      },
+      {
+            "album": "Hypersona",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273847fd3563870a4372c2186e8",
+            "artist": "36",
+            "link": "spotify:album:2lfUq3MEJMBvgXjj0dklol",
+            "toDelete": false
+      },
+      {
+            "album": "I",
+            "n": 4,
+            "img": "https://i.scdn.co/image/ab67616d0000b27382628a67dd725baaf514a4e3",
+            "artist": "F\u00f6llakzoid",
+            "link": "spotify:album:0RNZdkLRgAvD0JFbHgo5s1",
+            "toDelete": true
+      },
+      {
+            "album": "...I Care Because You Do",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c34c84629aa6f6e1c8ba5ac7",
+            "artist": "Aphex Twin",
+            "link": "spotify:album:0VG7XLJ8gSynEQDVnpHNNU",
+            "toDelete": false
+      },
+      {
+            "album": "IFeelLikeDirt",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d653f88352c2da499146473f",
+            "artist": "BONES",
+            "link": "spotify:album:1vurSXXQeO0h4sy1BBDYrt",
+            "toDelete": true
+      },
+      {
+            "album": "If You Wait (Deluxe Version)",
+            "n": 17,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a22bfab11753a14cdac2d19b",
+            "artist": "London Grammar",
+            "link": "spotify:album:4T8mGgL2CqKLQ2esn2Mb47",
+            "toDelete": false
+      },
+      {
+            "album": "IGOR",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b2737005885df706891a3c182a57",
+            "artist": "Tyler, The Creator",
+            "link": "spotify:album:5zi7WsKlIiUXv09tbGLKsE",
+            "toDelete": false
+      },
+      {
+            "album": "II",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b273cb4afbc1b0758ce7cd9c0e6d",
+            "artist": "Moderat",
+            "link": "spotify:album:4mMJMXxteSxAVtAswHN0ky",
+            "toDelete": false
+      },
+      {
+            "album": "II (Deluxe Edition)",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b2736d7e970464fcaae1379ac0f8",
+            "artist": "Unknown Mortal Orchestra",
+            "link": "spotify:album:6ULZg9jfTYgi41HmrRww24",
+            "toDelete": false
+      },
+      {
+            "album": "iii",
+            "n": 11,
+            "img": "https://i.scdn.co/image/ab67616d0000b27306eda68098c2a886a43685a8",
+            "artist": "Miike Snow",
+            "link": "spotify:album:3pWJFrSX6apPzt4inM4zXt",
+            "toDelete": false
+      },
+      {
+            "album": "III",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b273c395c2cd6fdcaa30335d7b5f",
+            "artist": "BADBADNOTGOOD",
+            "link": "spotify:album:4fKloYEEuG3ckFoOF8glRj",
+            "toDelete": false
+      },
+      {
+            "album": "III (Deluxe Edition)",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273b4a9148a73a4c433a3035451",
+            "artist": "Moderat",
+            "link": "spotify:album:7BmMOUo8nrmYHB2EHBGkSt",
+            "toDelete": false
+      },
+      {
+            "album": "The Music That I Make",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273ab97a5908ba90fa564257319",
+            "artist": "Leah Senior",
+            "link": "spotify:album:2gGK8ubYzIxMBr54ZLNiqf",
+            "toDelete": false
+      },
+      {
+            "album": "Dirt Femme",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b273aeb431774ee02fb6b7a9fea3",
+            "artist": "Tove Lo",
+            "link": "spotify:album:0HO9NtwyP7ZqB1jZ70MJL6",
+            "toDelete": false
+      },
+      {
+            "album": "A Brother",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738fba683e9d1279f04b5b7bb3",
+            "artist": "Lachlan Denton",
+            "link": "spotify:album:5rvHMcJX1N5yDJGopFqqiN",
+            "toDelete": false
+      },
+      {
+            "album": "Conversations with Friends (Original Score from the Television Series)",
+            "n": 31,
+            "img": "https://i.scdn.co/image/ab67616d0000b2730ee3a95af6a627a111e57c5e",
+            "artist": "Stephen Rennicks",
+            "link": "spotify:album:4FdUUA3XmNI59LOWaKDkLk",
+            "toDelete": false
+      },
+      {
+            "album": "Crosby, Stills & Nash",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a32339b8818323380682a889",
+            "artist": "Crosby, Stills & Nash",
+            "link": "spotify:album:6vUWpE8qciYHOhf7mgaGny",
+            "toDelete": false
+      },
+      {
+            "album": "Give Yourself to Love (Live)",
+            "n": 19,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a0d0ba8741577a6eda2b196b",
+            "artist": "Kate Wolf",
+            "link": "spotify:album:3rD2NrOWuNUd9b1ozWQ76x",
+            "toDelete": false
+      },
+      {
+            "album": "Close to You",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2738131f0e40194e03748abc3f7",
+            "artist": "Kate Wolf",
+            "link": "spotify:album:3IgFoFzOaVkdyfIgPs7h7h",
+            "toDelete": false
+      },
+      {
+            "album": "Float Along - Fill Your Lungs",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b27363beec6cdb3d2fd9b17e59a5",
+            "artist": "King Gizzard & The Lizard Wizard",
+            "link": "spotify:album:1XGcsaNaEmcIG5OstwlpAO",
+            "toDelete": false
+      },
+      {
+            "album": "Polygondwanaland",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b27394102a4d79f35042dc3bcc8a",
+            "artist": "King Gizzard & The Lizard Wizard",
+            "link": "spotify:album:6FAntlrL2g642UbLj66GTi",
+            "toDelete": false
+      },
+      {
+            "album": "The Silver Cord",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f40b4ff95579cd43a6b60db6",
+            "artist": "King Gizzard & The Lizard Wizard",
+            "link": "spotify:album:7iY6PA1ftgY8OKOzc2vBdo",
+            "toDelete": false
+      },
+      {
+            "album": "Humbug",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273f65d720a5d70dbb93e96d528",
+            "artist": "Arctic Monkeys",
+            "link": "spotify:album:5IEoiwkThhRmSMBANhpxl2",
+            "toDelete": false
+      },
+      {
+            "album": "So Familiar",
+            "n": 13,
+            "img": "https://i.scdn.co/image/ab67616d0000b273652d883cfa18cc31ad159fba",
+            "artist": "Way Dynamic",
+            "link": "spotify:album:26QVyPY3bVaA6iP2Qy86E3",
+            "toDelete": false
+      },
+      {
+            "album": "Owls",
+            "n": 14,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735b645eb501cf8c9c1026935d",
+            "artist": "Someone",
+            "link": "spotify:album:69SYB8DtD3w7GuWHVBlpyP",
+            "toDelete": false
+      },
+      {
+            "album": "ORBIT II",
+            "n": 12,
+            "img": "https://i.scdn.co/image/ab67616d0000b27346f038618cb8743d9b29de16",
+            "artist": "Someone",
+            "link": "spotify:album:2SUVfVHFN4FkC82FK1r16i",
+            "toDelete": false
+      },
+      {
+            "album": "Sacred Treasures V: From A Russian Cathedral",
+            "n": 16,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d82f5678f49cd45b3cace5ec",
+            "artist": "Various Artists",
+            "link": "spotify:album:4EFGKGJwLnYzR8UtsV7fWM",
+            "toDelete": false
+      },
+      {
+            "album": "We Like It Here",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b273a29d1ada28cf3d9d5fe1972d",
+            "artist": "Snarky Puppy",
+            "link": "spotify:album:4GzjQ0xXRlLl78ih481BUi",
+            "toDelete": false
+      },
+      {
+            "album": "Empire Central",
+            "n": 16,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734eb2eef80c0ef7ce74810c1f",
+            "artist": "Snarky Puppy",
+            "link": "spotify:album:17sDfQwRab5dr2aVsgu1IA",
+            "toDelete": false
+      },
+      {
+            "album": "Culcha Vulcha",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273fbbfe0718b529618828f94fb",
+            "artist": "Snarky Puppy",
+            "link": "spotify:album:3rA4jjk6YcRwVUD66fXS1J",
+            "toDelete": false
+      },
+      {
+            "album": "We're Not Here to Be Loved",
+            "n": 9,
+            "img": "https://i.scdn.co/image/ab67616d0000b2735e6a9cd045fa8da9ba2fe81a",
+            "artist": "Fleshwater",
+            "link": "spotify:album:0hm7PiBu72tRliLqLfiKy1",
+            "toDelete": false
+      },
+      {
+            "album": "Around the Fur",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b2730b1129853982ea17845d4eb6",
+            "artist": "Deftones",
+            "link": "spotify:album:7o4UsmV37Sg5It2Eb7vHzu",
+            "toDelete": false
+      },
+      {
+            "album": "Fire of Love (Music From and Inspired by the Motion Picture)",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b2734b478aa597834088e41a3a3f",
+            "artist": "Nicolas Godin",
+            "link": "spotify:album:1A2FqRl103QAef0Uqu9WcW",
+            "toDelete": false
+      },
+      {
+            "album": "Suntub",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b27386a8513fec7563a8a6584c84",
+            "artist": "ML Buch",
+            "link": "spotify:album:6IjtDhIvMy3I8xORtWAVax",
+            "toDelete": false
+      },
+      {
+            "album": "All good?",
+            "n": 8,
+            "img": "https://i.scdn.co/image/ab67616d0000b27391ee478e77656d017787ed3e",
+            "artist": "Nonkeen",
+            "link": "spotify:album:0t6tusoh1iWAYXmI4ER144",
+            "toDelete": false
+      },
+      {
+            "album": "All of Us",
+            "n": 15,
+            "img": "https://i.scdn.co/image/ab67616d0000b273d621bed7de65d30c8daac9ba",
+            "artist": "Luke Howard",
+            "link": "spotify:album:2xsfxKRrbaKRc4LNbpgcZK",
+            "toDelete": false
+      },
+      {
+            "album": "Paris",
+            "n": 10,
+            "img": "https://i.scdn.co/image/ab67616d0000b273e7b9f44a74fa4e35ebe1a6eb",
+            "artist": "Nils Frahm",
+            "link": "spotify:album:7LSOjGfETku2oPC7mr6ubo",
+            "toDelete": false
+      }
+]

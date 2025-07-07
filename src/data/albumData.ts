@@ -1,0 +1,76 @@
+import { Album } from "../types/types";
+
+let library: Album[] = [];
+let filteredLibrary: Album[] = [];
+
+/**
+ * Fetches album data from the library JSON file.
+ * @returns Promise resolving to the array of albums.
+ */
+export async function fetchAlbums(): Promise<Album[]> {
+  try {
+    const response = await fetch("/src/library_full.json");
+    if (!response.ok) {
+      throw new Error("Failed to load album data");
+    }
+    library = await response.json();
+    console.log(library);
+    filteredLibrary = library;
+    return library;
+  } catch (error) {
+    console.error(error);
+    library = [];
+    filteredLibrary = [];
+    return [];
+  }
+}
+
+/**
+ * Filters albums based on the search term.
+ * @param searchTerm - The term to filter albums by.
+ */
+export function filterAlbums(searchTerm: string): void {
+  if (!searchTerm) {
+    filteredLibrary = library;
+    return;
+  }
+  const term = searchTerm.toLowerCase();
+  filteredLibrary = library.filter(album => {
+    const albumName = album.album.toLowerCase();
+    const artistName = album.artist.toLowerCase();
+    // Simple fuzzy match allowing for close matches
+    return albumName.includes(term) || artistName.includes(term) ||
+           albumName.includes(term.slice(0, -1)) || artistName.includes(term.slice(0, -1)) ||
+           (term.length > 1 && (albumName.includes(term.slice(1)) || artistName.includes(term.slice(1))));
+  });
+}
+
+/**
+ * Gets the current filtered library of albums.
+ * @returns The array of filtered albums.
+ */
+export function getFilteredLibrary(): Album[] {
+  return filteredLibrary;
+}
+
+/**
+ * Gets the total number of albums in the filtered library.
+ * @returns The count of filtered albums.
+ */
+export function getTotalAlbums(): number {
+  return filteredLibrary.length;
+}
+
+/**
+ * Shuffles the library array in a performance-oriented way.
+ */
+export function shuffleLibrary(): void {
+  for (let i = library.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [library[i], library[j]] = [library[j], library[i]];
+  }
+  // Update filtered library if it's currently the full library
+  if (filteredLibrary === library) {
+    filteredLibrary = library;
+  }
+}
