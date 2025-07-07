@@ -3,4 +3,6 @@ export interface Album {
   artist: string;
   img: string;
   link: string;
+  n: number;
+  toDelete: boolean;
 }

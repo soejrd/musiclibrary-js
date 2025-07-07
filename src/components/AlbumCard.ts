@@ -1,14 +1,16 @@
+import { Album } from "../types/types";
+
 /**
  * Creates an album card element with the given properties.
- * @param {Object} props - The properties for the album card.
- * @param {string} props.imageUrl - The URL of the album image.
- * @param {string} props.albumName - The name of the album.
- * @param {string} props.artistName - The name of the artist.
- * @param {string} props.link - The link to open when the card is clicked.
- * @returns {HTMLElement} The album card element.
+ * @param props - The properties for the album card.
+ * @param props.imageUrl - The URL of the album image.
+ * @param props.albumName - The name of the album.
+ * @param props.artistName - The name of the artist.
+ * @param props.link - The link to open when the card is clicked.
+ * @returns The album card element.
  */
-export function AlbumCard({ imageUrl, albumName, artistName, link }) {
-  const card = document.createElement('a');
+export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName, link }: Partial<Album>): HTMLElement {
+  const card = document.createElement('a') as HTMLAnchorElement;
   card.setAttribute('target', '_blank');
   card.setAttribute('rel', 'noopener noreferrer');
   card.setAttribute('href', link || '#');

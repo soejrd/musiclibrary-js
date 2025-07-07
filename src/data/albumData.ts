@@ -9,19 +9,46 @@ let filteredLibrary: Album[] = [];
  */
 export async function fetchAlbums(): Promise<Album[]> {
   try {
-    const response = await fetch("/src/library_full.json");
+    const response = await fetch("/library_full.json");
     if (!response.ok) {
-      throw new Error("Failed to load album data");
+      throw new Error("Failed to load album data from /library_full.json");
     }
     library = await response.json();
-    console.log(library);
+    console.log("Loaded library:", library.length, "albums");
     filteredLibrary = library;
     return library;
   } catch (error) {
-    console.error(error);
-    library = [];
-    filteredLibrary = [];
-    return [];
+    console.error("Error loading album data:", error);
+    // Fallback to a small dataset if fetch fails
+    library = [
+      {
+        "album": "Spicy Salad",
+        "n": 6,
+        "img": "https://i.scdn.co/image/ab67616d0000b2737c884060b5049a77856bacf8",
+        "artist": "Tuna Salad",
+        "link": "spotify:album:5WbxjpioUPIBF4ULMKvUbF",
+        "toDelete": false
+      },
+      {
+        "album": "Section.80",
+        "n": 16,
+        "img": "https://i.scdn.co/image/ab67616d0000b27333d50ba80791b4ed381f5221",
+        "artist": "Kendrick Lamar",
+        "link": "spotify:album:13WjgUEEAQp0d9JqojlWp1",
+        "toDelete": true
+      },
+      {
+        "album": "InnerSpeaker",
+        "n": 11,
+        "img": "https://i.scdn.co/image/ab67616d0000b273cbcddf5b9309f972363ae406",
+        "artist": "Tame Impala",
+        "link": "spotify:album:79Ij6ZNKHVFVRNvXoNbvZO",
+        "toDelete": false
+      }
+    ];
+    console.log("Using fallback data with", library.length, "albums");
+    filteredLibrary = library;
+    return library;
   }
 }
 
