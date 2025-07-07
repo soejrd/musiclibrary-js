@@ -111,6 +111,35 @@ export function setupEventListeners(): void {
       searchInput.classList.add("-translate-x-9");
     }
   });
+
+  // Theme toggle button
+  document.getElementById("themeBtn")?.addEventListener("click", () => {
+    const htmlElement = document.documentElement;
+    const themeIcon = document.querySelector("#themeBtn .material-symbols-rounded");
+    if (htmlElement.classList.contains("dark")) {
+      htmlElement.classList.remove("dark");
+      if (themeIcon) themeIcon.textContent = "dark_mode";
+      localStorage.setItem("theme", "light");
+    } else {
+      htmlElement.classList.add("dark");
+      if (themeIcon) themeIcon.textContent = "light_mode";
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
+  // Apply saved theme on load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const htmlElement = document.documentElement;
+    const themeIcon = document.querySelector("#themeBtn .material-symbols-rounded");
+    if (savedTheme === "light") {
+      htmlElement.classList.add("light");
+      if (themeIcon) themeIcon.textContent = "light_mode";
+    } else {
+      htmlElement.classList.remove("light");
+      if (themeIcon) themeIcon.textContent = "dark_mode";
+    }
+  });
 }
 
 /**

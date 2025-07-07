@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [
         tailwindcss(),
   ],
+  base: '/musiclibrary-js/',
     resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

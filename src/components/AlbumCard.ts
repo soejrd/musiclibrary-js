@@ -22,7 +22,7 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
         <img class="w-full object-cover" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
         <div class="animate-pulse bg-zinc-800 h-full w-full object-cover"></div>
       </div>
-      <div class="scrim absolute top-0 left-0 w-full h-full bg-linear-to-t from-black to-transparent opacity-0 group-hover:opacity-70 transition-all duration-0 ease-out"></div>
+      <div class="scrim absolute top-0 left-0 w-full h-full bg-linear-to-t from-black to-transparent opacity-0 group-hover:opacity-70 transition-all duration-100 ease-out"></div>
       <div class="p-2 flex flex-col justify-between flex-grow absolute bottom-0 group-hover:opacity-100 opacity-0 translate-y-1 group-hover:translate-y-0 transition-all duration-100 ease-out">
         <h3 class="font-bold text-zinc-100 mb-1 truncate">${albumName || 'Unknown Album'}</h3>
         <p class="text-xs text-zinc-300 truncate mb-1">${artistName || 'Unknown Artist'}</p>

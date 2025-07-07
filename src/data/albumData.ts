@@ -9,9 +9,9 @@ let filteredLibrary: Album[] = [];
  */
 export async function fetchAlbums(): Promise<Album[]> {
   try {
-    const response = await fetch("/library_full.json");
+    const response = await fetch("library_full.json");
     if (!response.ok) {
-      throw new Error("Failed to load album data from /library_full.json");
+      throw new Error("Failed to load album data from library_full.json");
     }
     library = await response.json();
     console.log("Loaded library:", library.length, "albums");
@@ -21,14 +21,6 @@ export async function fetchAlbums(): Promise<Album[]> {
     console.error("Error loading album data:", error);
     // Fallback to a small dataset if fetch fails
     library = [
-      {
-        "album": "Spicy Salad",
-        "n": 6,
-        "img": "https://i.scdn.co/image/ab67616d0000b2737c884060b5049a77856bacf8",
-        "artist": "Tuna Salad",
-        "link": "spotify:album:5WbxjpioUPIBF4ULMKvUbF",
-        "toDelete": false
-      },
       {
         "album": "Section.80",
         "n": 16,
