@@ -6,13 +6,9 @@ A web application for browsing and managing a collection of music albums, built 
 
 This project provides a user interface to display music albums in a grid layout, with functionality to view album details. It is developed using modern JavaScript practices and the Vite build tool for fast development and optimized builds.
 
-## Installation
-
-[Instructions for setting up the project will be added here.]
-
 ## Usage
 
-[Instructions for using the application will be added here.]
+View the library at [soejrd.github.io/musiclibrary-js](https://soejrd.github.io/musiclibrary-js)
 
 ## Contributing
 
