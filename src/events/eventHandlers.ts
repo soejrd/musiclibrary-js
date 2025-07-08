@@ -22,6 +22,35 @@ function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (..
  * Sets up event listeners for the application.
  */
 export function setupEventListeners(): void {
+  // Handle hover effects for global scrim
+  const grid = document.getElementById("grid");
+  const scrim = document.querySelector(".scrim");
+  if (grid && scrim) {
+    grid.addEventListener("mouseover", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains("album-card") || target.closest(".album-card")) {
+        scrim.classList.remove("opacity-0");
+        scrim.classList.add("opacity-70");
+        const albumCard = target.classList.contains("album-card") ? target : target.closest(".album-card");
+        if (albumCard) {
+          albumCard.classList.add("z-50");
+        }
+      }
+    });
+    
+    grid.addEventListener("mouseout", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains("album-card") || target.closest(".album-card")) {
+        scrim.classList.remove("opacity-70");
+        scrim.classList.add("opacity-0");
+        const albumCard = target.classList.contains("album-card") ? target : target.closest(".album-card");
+        if (albumCard) {
+          albumCard.classList.remove("z-50");
+        }
+      }
+    });
+  }
+
   // Zoom in button
   document.getElementById("zoomInBtn")?.addEventListener("click", () => {
     if (zoomIn()) {

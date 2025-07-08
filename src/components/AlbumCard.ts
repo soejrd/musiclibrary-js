@@ -14,7 +14,7 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
   card.setAttribute('target', '_blank');
   card.setAttribute('rel', 'noopener noreferrer');
   card.setAttribute('href', link || '#');
-  card.className = 'album-card relative overflow-hidden flex flex-col p-2 transition-all duration-500 ease-out group hover:z-1';
+  card.className = 'album-card relative overflow-hidden flex flex-col p-2 transition-all duration-500 ease-out group hover:z-20';
 
   card.innerHTML = `
     <div class="wrapper w-full h-full flex flex-col relative rounded-sm overflow-hidden group-hover:shadow-md transition-all duration-200 ease-out">
