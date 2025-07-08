@@ -9,6 +9,7 @@ let rowHeight: number = 176;
 let itemWidth: number = 176;
 let gridHeight: number = 0;
 let totalAlbums: number = 0;
+let viewMode: 'grid' | 'coverflow' = 'grid';
 
 /**
  * Initializes the grid container and calculates initial layout.
@@ -101,4 +102,20 @@ export function getGridDimensions(): {
  */
 export function getGridElement(): HTMLElement | null {
   return grid;
+}
+
+/**
+ * Sets the current view mode.
+ * @param mode - The view mode to set ('grid' or 'coverflow').
+ */
+export function setViewMode(mode: 'grid' | 'coverflow'): void {
+  viewMode = mode;
+}
+
+/**
+ * Gets the current view mode.
+ * @returns The current view mode ('grid' or 'coverflow').
+ */
+export function getViewMode(): 'grid' | 'coverflow' {
+  return viewMode;
 }
