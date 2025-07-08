@@ -14,23 +14,24 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
   card.setAttribute('target', '_blank');
   card.setAttribute('rel', 'noopener noreferrer');
   card.setAttribute('href', link || '#');
-  card.className = 'album-card relative overflow-hidden flex flex-col p-2 transition-all duration-500 ease-out group hover:z-20';
+  card.className = 'album-card relative flex flex-col p-2 transition-all duration-500 ease-out group hover:z-20';
 
   // Determine if in coverflow mode by checking the grid container's view mode
   const grid = document.getElementById("grid");
   const isCoverflow = grid && grid.style.display === 'flex' && grid.style.overflowX === 'auto';
 
-  if (isCoverflow) {
-    // Layout for coverflow mode: title and artist under the image, visibility handled by CSS for center album
-    card.innerHTML = `
-      <div class="wrapper w-full flex flex-col relative rounded-sm overflow-hidden group-hover:shadow-md transition-all duration-200 ease-out">
-        <div class="album-image w-full h-auto object-cover flex-shrink-0">
+    if (isCoverflow) {
+      // Layout for coverflow mode: title and artist under the image, visibility handled by CSS for center album
+      card.innerHTML = `
+      <div class="wrapper w-full flex flex-col relative rounded-sm group-hover:shadow-md transition-all duration-200 ease-out overflow-visible">
+        <div class="album-image w-full h-auto object-cover flex-shrink-0 relative overflow-visible">
           <img class="w-full object-cover" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
+          <img class="album-image--shadow w-full object-cover absolute top-0 left-0 transform -scale-200 transform-origin-center -z-1 opacity-0 transition-all duration-[1s] ease-out" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
           <div class="animate-pulse bg-zinc-800 h-full w-full object-cover"></div>
         </div>
-        <div class="text-container mt-2 flex flex-col opacity-0 transition-opacity duration-100 ease-out">
-          <h3 class="text-xl font-bold text-zinc-100 mb-1 truncate">${albumName || 'Unknown Album'}</h3>
-          <p class="text-base text-zinc-300 truncate">${artistName || 'Unknown Artist'}</p>
+        <div class="text-container mt-6 flex flex-col opacity-0 transition-opacity duration-100 ease-out">
+          <h3 class="text-4xl font-bold text-zinc-100 mb-2 truncate">${albumName || 'Unknown Album'}</h3>
+          <p class="text-lg text-zinc-300 truncate">${artistName || 'Unknown Artist'}</p>
         </div>
       </div>
     `;

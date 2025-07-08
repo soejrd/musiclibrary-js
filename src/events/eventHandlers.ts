@@ -4,6 +4,94 @@ import { clearRenderedAlbums, renderVisibleAlbums, updateRenderedAlbums } from "
 import { renderCoverflowAlbums, clearCoverflowAlbums, updateCoverflowRenderedAlbums, updateCoverflowStyles } from "../coverflow/rendering";
 
 /**
+ * Renders the control buttons dynamically into the controls container.
+ */
+function renderControlButtons(): void {
+  const controlsContainer = document.getElementById("controlsContainer");
+  if (!controlsContainer) return;
+
+  const buttonConfigs = [
+    { id: "shuffleBtn", icon: "shuffle", className: "controls--shuffle", handler: () => {
+      shuffleLibrary();
+      clearAlbumsBasedOnViewMode();
+      renderAlbumsBasedOnViewMode();
+    }},
+    { id: "zoomOutBtn", icon: "zoom_out", handler: () => {
+      if (getViewMode() === 'grid' && zoomOut()) {
+        updateItemSize();
+        calculateGridLayout(getTotalAlbums());
+        updateRenderedAlbums();
+        renderVisibleAlbums();
+      }
+    }},
+    { id: "zoomInBtn", icon: "zoom_in", handler: () => {
+      if (getViewMode() === 'grid' && zoomIn()) {
+        updateItemSize();
+        calculateGridLayout(getTotalAlbums());
+        updateRenderedAlbums();
+        renderVisibleAlbums();
+      }
+    }},
+    { id: "viewToggleBtn", icon: "view_carousel", handler: () => {
+      const currentMode = getViewMode();
+      const newMode = currentMode === 'grid' ? 'coverflow' : 'grid';
+      setViewMode(newMode);
+      const viewIcon = document.querySelector("#viewToggleBtn .material-symbols-rounded");
+      if (viewIcon) {
+        viewIcon.textContent = newMode === 'grid' ? 'view_carousel' : 'grid_view';
+      }
+      clearAlbumsBasedOnViewMode();
+      if (newMode === 'grid') {
+        calculateGridLayout(getTotalAlbums());
+      }
+      renderAlbumsBasedOnViewMode();
+      if (newMode === 'coverflow') {
+        updateCoverflowStyles();
+      }
+    }},
+    { id: "themeBtn", icon: "light_mode", handler: () => {
+      const htmlElement = document.documentElement;
+      const themeIcon = document.querySelector("#themeBtn .material-symbols-rounded");
+      if (htmlElement.classList.contains("dark")) {
+        htmlElement.classList.remove("dark");
+        if (themeIcon) themeIcon.textContent = "dark_mode";
+        localStorage.setItem("theme", "light");
+      } else {
+        htmlElement.classList.add("dark");
+        if (themeIcon) themeIcon.textContent = "light_mode";
+        localStorage.setItem("theme", "dark");
+      }
+    }}
+  ];
+
+  buttonConfigs.forEach(config => {
+    const button = document.createElement("button");
+    button.id = config.id;
+    button.className = "px-2 py-2 text-zinc-500 dark:text-zinc-400 dark:hover:text-white hover:text-black flex cursor-pointer hover:bg-white/30 dark:hover:bg-zinc-950/30 rounded-sm duration-150 ease-out" + (config.className ? ` ${config.className}` : "");
+    const iconSpan = document.createElement("span");
+    iconSpan.className = "material-symbols-rounded";
+    iconSpan.textContent = config.icon;
+    button.appendChild(iconSpan);
+    if (config.handler) {
+      button.addEventListener("click", config.handler);
+    }
+    controlsContainer.appendChild(button);
+  });
+
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem("theme");
+  const htmlElement = document.documentElement;
+  const themeIcon = document.querySelector("#themeBtn .material-symbols-rounded");
+  if (savedTheme === "light") {
+    htmlElement.classList.remove("dark");
+    if (themeIcon) themeIcon.textContent = "dark_mode";
+  } else {
+    htmlElement.classList.add("dark");
+    if (themeIcon) themeIcon.textContent = "light_mode";
+  }
+}
+
+/**
  * Debounces a function to prevent it from being called too frequently.
  * @param func - The function to debounce.
  * @param wait - Wait time in milliseconds.
@@ -47,27 +135,6 @@ function clearAlbumsBasedOnViewMode(): void {
  * Sets up event listeners for the application.
  */
 export function setupEventListeners(): void {
-  // Toggle view mode between grid and coverflow
-  document.getElementById("viewToggleBtn")?.addEventListener("click", () => {
-    const currentMode = getViewMode();
-    const newMode = currentMode === 'grid' ? 'coverflow' : 'grid';
-    setViewMode(newMode);
-    // Update button text or icon based on mode
-    const viewIcon = document.querySelector("#viewToggleBtn .material-symbols-rounded");
-    if (viewIcon) {
-      viewIcon.textContent = newMode === 'grid' ? 'view_carousel' : 'grid_view';
-    }
-    // Clear current view and render new view
-    clearAlbumsBasedOnViewMode();
-    if (newMode === 'grid') {
-      calculateGridLayout(getTotalAlbums());
-    }
-    renderAlbumsBasedOnViewMode();
-    if (newMode === 'coverflow') {
-      updateCoverflowStyles();
-    }
-  });
-  
   // Handle hover effects for global scrim
   const grid = document.getElementById("grid");
   const scrim = document.querySelector(".scrim");
@@ -96,33 +163,6 @@ export function setupEventListeners(): void {
       }
     });
   }
-
-  // Zoom in button (only active in grid mode)
-  document.getElementById("zoomInBtn")?.addEventListener("click", () => {
-    if (getViewMode() === 'grid' && zoomIn()) {
-      updateItemSize();
-      calculateGridLayout(getTotalAlbums());
-      updateRenderedAlbums();
-      renderVisibleAlbums();
-    }
-  });
-
-  // Zoom out button (only active in grid mode)
-  document.getElementById("zoomOutBtn")?.addEventListener("click", () => {
-    if (getViewMode() === 'grid' && zoomOut()) {
-      updateItemSize();
-      calculateGridLayout(getTotalAlbums());
-      updateRenderedAlbums();
-      renderVisibleAlbums();
-    }
-  });
-
-  // Shuffle button
-  document.getElementById("shuffleBtn")?.addEventListener("click", () => {
-    shuffleLibrary();
-    clearAlbumsBasedOnViewMode();
-    renderAlbumsBasedOnViewMode();
-  });
 
   // Resize event with debounce
   window.addEventListener(
@@ -205,34 +245,7 @@ export function setupEventListeners(): void {
     }
   });
 
-  // Theme toggle button
-  document.getElementById("themeBtn")?.addEventListener("click", () => {
-    const htmlElement = document.documentElement;
-    const themeIcon = document.querySelector("#themeBtn .material-symbols-rounded");
-    if (htmlElement.classList.contains("dark")) {
-      htmlElement.classList.remove("dark");
-      if (themeIcon) themeIcon.textContent = "dark_mode";
-      localStorage.setItem("theme", "light");
-    } else {
-      htmlElement.classList.add("dark");
-      if (themeIcon) themeIcon.textContent = "light_mode";
-      localStorage.setItem("theme", "dark");
-    }
-  });
-
-  // Apply saved theme on load
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-    const htmlElement = document.documentElement;
-    const themeIcon = document.querySelector("#themeBtn .material-symbols-rounded");
-    if (savedTheme === "light") {
-      htmlElement.classList.add("light");
-      if (themeIcon) themeIcon.textContent = "light_mode";
-    } else {
-      htmlElement.classList.remove("light");
-      if (themeIcon) themeIcon.textContent = "dark_mode";
-    }
-  });
+  // Theme handling is now managed in renderControlButtons
 }
 
 /**
@@ -245,6 +258,7 @@ export function initializeApp(): void {
     shuffleLibrary();
     calculateGridLayout(getTotalAlbums());
     renderAlbumsBasedOnViewMode();
+    renderControlButtons();
     setupEventListeners();
   });
 }
