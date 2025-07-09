@@ -114,15 +114,14 @@ export function renderCoverflowAlbums(): void {
     }
   }
 
-  // Scroll to the middle album to ensure a centered view on initial render
-  if (totalAlbums > 0) {
-    const middleIndex = Math.floor(totalAlbums / 2);
-    const middleElement = grid.querySelector(
-      `[data-index="${middleIndex}"]`
+  // Scroll to the 5th album to ensure proper perspective effect
+  if (totalAlbums > 5) {
+    const fifthElement = grid.querySelector(
+      `[data-index="4"]`
     ) as HTMLElement;
-    if (middleElement) {
-      middleElement.scrollIntoView({
-        behavior: "smooth",
+    if (fifthElement) {
+      fifthElement.scrollIntoView({
+        behavior: "instant",
         block: "nearest",
         inline: "center",
       });
