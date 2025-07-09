@@ -10,6 +10,16 @@ const gap = -85; //75
 // A Set to track which indices are currently rendered in coverflow view
 const renderedIndices = new Set<number>();
 
+// Cache for coverflow measurements to avoid recalculations
+const measurementCache = new Map<number, {
+  rect: DOMRect;
+  centerX: number;
+  distance: number;
+}>();
+
+// Throttle update frequency (ms)
+const UPDATE_THROTTLE = 16; // ~60fps
+let lastUpdateTime = 0;
 
 /**
  * Renders albums in a coverflow layout, limiting to a visible range plus buffer.
@@ -20,29 +30,53 @@ export function renderCoverflowAlbums(): void {
 
   const filteredLibrary = getFilteredLibrary();
   const totalAlbums = filteredLibrary.length;
-  
+
   // Clear any existing grid styling that might interfere with coverflow
-  grid.style.height = 'auto';
-  grid.style.overflowX = 'auto';
-  grid.style.overflowY = 'visible';
-  grid.style.whiteSpace = 'nowrap';
-  grid.style.display = 'flex';
-  grid.style.alignItems = 'center';
-  grid.style.justifyContent = 'flex-start';
-  grid.style.scrollSnapType = 'x mandatory';
-  grid.classList.add('py-40'); // Add padding using Tailwind class to accommodate shadows without breaking snap
-  grid.classList.add('coverflow-mode'); // Add class to apply coverflow-specific styles like scrim
-  
+  grid.style.height = "auto";
+  grid.style.overflowX = "auto";
+  grid.style.overflowY = "visible";
+  grid.style.whiteSpace = "nowrap";
+  grid.style.display = "flex";
+  grid.style.alignItems = "center";
+  grid.style.justifyContent = "flex-start";
+  grid.style.scrollSnapType = "x mandatory";
+  grid.classList.add("py-40"); // Add padding using Tailwind class to accommodate shadows without breaking snap
+  grid.classList.add("coverflow-mode"); // Add class to apply coverflow-specific styles like scrim
+
   // Create scroll indicator container
-  let scrollIndicator = grid.parentElement?.querySelector('.scroll-indicator') as HTMLElement;
+  let scrollIndicator = grid.parentElement?.querySelector(
+    ".scroll-indicator"
+  ) as HTMLElement;
   if (!scrollIndicator) {
-    scrollIndicator = document.createElement('div');
-    scrollIndicator.classList.add('scroll-indicator', 'max-w-2xl', 'mx-auto', 'flex', 'justify-between', 'bottom-20', 'absolute', 'left-0', 'right-0', 'px-4', 'z-105');
-    scrollIndicator.style.height = '30px';
+    scrollIndicator = document.createElement("div");
+    scrollIndicator.classList.add(
+      "scroll-indicator",
+      "max-w-2xl",
+      "mx-auto",
+      "flex",
+      "justify-between",
+      "bottom-20",
+      "absolute",
+      "left-0",
+      "right-0",
+      "px-4",
+      "z-105"
+    );
+    scrollIndicator.style.height = "30px";
     // Create 100 indicator lines
     for (let i = 0; i < 80; i++) {
-      const line = document.createElement('div');
-      line.classList.add('indicator-line', 'bg-zinc-950', 'dark:bg-gray-200', 'opacity-30', 'transition-all', 'duration-300', 'ease-out', 'w-[1px]', 'h-3');
+      const line = document.createElement("div");
+      line.classList.add(
+        "indicator-line",
+        "bg-zinc-950",
+        "dark:bg-gray-200",
+        "opacity-30",
+        "transition-all",
+        "duration-300",
+        "ease-out",
+        "w-[1px]",
+        "h-3"
+      );
       // line.style.width = '1px';
       // line.style.height = '12px';
       line.dataset.index = i.toString();
@@ -52,7 +86,7 @@ export function renderCoverflowAlbums(): void {
       grid.parentElement.insertBefore(scrollIndicator, grid);
     }
   }
-  
+
   // Render all albums to prevent scrolling issues
   for (let i = 0; i < totalAlbums; i++) {
     if (!renderedIndices.has(i)) {
@@ -65,13 +99,13 @@ export function renderCoverflowAlbums(): void {
       }) as HTMLElement;
 
       // Apply coverflow-specific class for CSS styling
-      albumElement.classList.add('coverflow-item');
-      albumElement.classList.add('w-sm');
-      albumElement.style.position = 'relative';
-      albumElement.style.display = 'inline-block';
-      albumElement.style.scrollSnapAlign = 'center';
-      albumElement.style.flexShrink = '0';
-      
+      albumElement.classList.add("coverflow-item");
+      albumElement.classList.add("w-sm");
+      albumElement.style.position = "relative";
+      albumElement.style.display = "inline-block";
+      albumElement.style.scrollSnapAlign = "center";
+      albumElement.style.flexShrink = "0";
+
       // Optionally add dataset for tracking
       albumElement.dataset.index = i.toString();
 
@@ -79,13 +113,19 @@ export function renderCoverflowAlbums(): void {
       renderedIndices.add(i);
     }
   }
-  
+
   // Scroll to the middle album to ensure a centered view on initial render
   if (totalAlbums > 0) {
     const middleIndex = Math.floor(totalAlbums / 2);
-    const middleElement = grid.querySelector(`[data-index="${middleIndex}"]`) as HTMLElement;
+    const middleElement = grid.querySelector(
+      `[data-index="${middleIndex}"]`
+    ) as HTMLElement;
     if (middleElement) {
-      middleElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      middleElement.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
     }
   }
 }
@@ -111,26 +151,27 @@ export function clearCoverflowAlbums(): void {
   const grid = getGridElement();
   if (!grid) return;
 
-  grid.innerHTML = '';
+  grid.innerHTML = "";
   renderedIndices.clear();
-  
+
   // Remove coverflow-specific class
-  grid.classList.remove('coverflow-mode');
-  
+  grid.classList.remove("coverflow-mode");
+
   // Remove scroll indicator
-  const scrollIndicator = grid.parentElement?.querySelector('.scroll-indicator');
+  const scrollIndicator =
+    grid.parentElement?.querySelector(".scroll-indicator");
   if (scrollIndicator) {
     scrollIndicator.remove();
   }
-  
+
   // Reset grid styling to default or grid-specific styles
-  grid.style.overflowX = '';
-  grid.style.overflowY = '';
-  grid.style.whiteSpace = '';
-  grid.style.display = '';
-  grid.style.alignItems = '';
-  grid.style.justifyContent = '';
-  grid.style.scrollSnapType = '';
+  grid.style.overflowX = "";
+  grid.style.overflowY = "";
+  grid.style.whiteSpace = "";
+  grid.style.display = "";
+  grid.style.alignItems = "";
+  grid.style.justifyContent = "";
+  grid.style.scrollSnapType = "";
 }
 
 /**
@@ -138,131 +179,154 @@ export function clearCoverflowAlbums(): void {
  * Only styles albums within the visible range (center plus 8 on each side).
  */
 export function updateCoverflowStyles(): void {
+  const now = performance.now();
+  if (now - lastUpdateTime < UPDATE_THROTTLE) {
+    return;
+  }
+  lastUpdateTime = now;
+
   const grid = getGridElement();
   if (!grid) return;
 
+  // Batch all DOM reads first
   const viewportWidth = window.innerWidth;
   const scrollLeft = grid.scrollLeft;
   const centerX = viewportWidth / 2 + scrollLeft;
-
   const albumElements = grid.querySelectorAll(".coverflow-item");
   const visibleRange = 8; // Number of albums to style on each side of the center
   let centerIndex = -1;
   let minDistance = Infinity;
 
-  // Find the album closest to the center and mark it, ensuring only one album has the center-album class
-  let closestElement: HTMLElement | null = null;
-  albumElements.forEach((element) => {
-    const htmlElement = element as HTMLElement;
-    const rect = element.getBoundingClientRect();
-    const albumCenterX = rect.left + rect.width / 2 + scrollLeft;
-    const distanceFromCenter = Math.abs(centerX - albumCenterX);
-    if (distanceFromCenter < minDistance) {
-      minDistance = distanceFromCenter;
-      centerIndex = parseInt(htmlElement.dataset.index || "0", 10);
-      closestElement = htmlElement;
-    }
-    // Apply gradual opacity to text based on how close to center
-    const textContainer = htmlElement.querySelector('.text-container') as HTMLElement | null;
-    if (textContainer) {
-      const maxDistanceForText = viewportWidth / 8; // Full opacity only within 12.5% of viewport width from center
-      const textOpacity = Math.max(0, 1 - distanceFromCenter / maxDistanceForText);
-      if (textOpacity > 0) {
-        textContainer.classList.remove('opacity-0');
-        textContainer.style.opacity = textOpacity.toString();
-      } else {
-        textContainer.classList.add('opacity-0');
-        textContainer.style.opacity = '0';
-      }
-    }
-  });
-  
-  // Update scroll indicator
-  const scrollIndicator = grid.parentElement?.querySelector('.scroll-indicator') as HTMLElement;
-  if (scrollIndicator) {
-    const totalAlbums = albumElements.length;
-    const scrollPercentage = scrollLeft / (grid.scrollWidth - viewportWidth);
-    const activeLineIndex = Math.floor(scrollPercentage * 99); // 0 to 99 for 100 lines
-    const lines = scrollIndicator.querySelectorAll('.indicator-line');
-    lines.forEach((line, index) => {
-      const lineElement = line as HTMLElement;
-      if (index === activeLineIndex) {
-        lineElement.style.transform = 'scale(2.5, 2.5)';
-        lineElement.style.transformOrigin = 'center';
-        lineElement.style.opacity = '1';
-      } else {
-        lineElement.style.transform = 'scale(1, 1)';
-        lineElement.style.transformOrigin = 'center';
-        lineElement.style.opacity = '0.3';
-      }
-    });
-  }
-
-  // Remove center-album class from all elements and add it only to the closest one
-  albumElements.forEach((element) => {
-    const htmlElement = element as HTMLElement;
-    if (htmlElement === closestElement) {
-      htmlElement.classList.add('center-album');
-    } else {
-      htmlElement.classList.remove('center-album');
-    }
-  });
-
-  // Update rendered albums based on the center index
-  updateCoverflowRenderedAlbums(centerIndex);
-
-  // Determine the range of indices to style
-  const startIndex = Math.max(0, centerIndex - visibleRange);
-  const endIndex = centerIndex + visibleRange;
+  // First pass: Collect all measurements and find center element
+  const measurements: {
+    element: HTMLElement;
+    rect: DOMRect;
+    centerX: number;
+    distance: number;
+    index: number;
+  }[] = [];
 
   albumElements.forEach((element) => {
     const htmlElement = element as HTMLElement;
     const index = parseInt(htmlElement.dataset.index || "0", 10);
+    
+    // Get fresh measurements during scroll for fluid animations
     const rect = element.getBoundingClientRect();
     const albumCenterX = rect.left + rect.width / 2 + scrollLeft;
     const distanceFromCenter = Math.abs(centerX - albumCenterX);
+    
+    // Store in cache (used for initial render)
+    measurementCache.set(index, { rect, centerX: albumCenterX, distance: distanceFromCenter });
 
-    // Reset styles by default
-    htmlElement.style.transform = 'none';
-    htmlElement.style.opacity = '0.5';
-    htmlElement.style.marginLeft = `${gap}px`;
-    htmlElement.style.marginRight = `${gap}px`;
+    measurements.push({
+      element: htmlElement,
+      rect,
+      centerX: albumCenterX,
+      distance: distanceFromCenter,
+      index
+    });
 
-    // Only apply dynamic styles if within the visible range
-    if (index >= startIndex && index <= endIndex) {
-      // Calculate a dynamic rotation and scale based on distance from center
-      // Max rotation angle will be 60 degrees at a distance of viewportWidth / 2 or more
-      const maxDistance = viewportWidth / 2;
-      const rotationFactor = Math.min(distanceFromCenter / maxDistance, 1);
-      const baseRotationAngle = 30 + rotationFactor * 30; // Starts at 30deg, increases to 60deg
-      const opacityValue = 1 - rotationFactor * 0.4; // Opacity decreases from 1 to 0.6
-      const scaleValue = 1 - rotationFactor * 0.7; // Scale down to 0.3 as distance increases
-      // Calculate z-index based on distance from center, higher for closer to center
-      const zIndexValue = Math.floor(100 - rotationFactor * 50); // z-index from 100 (center) to 50 (far)
-      htmlElement.style.zIndex = zIndexValue.toString();
-
-      // Apply a gradual rotation even near the center for fluidity
-      let rotationAngle = baseRotationAngle;
-      if (distanceFromCenter < rect.width / 2) {
-        // This album is approximately centered, reduce rotation gradually
-        const centerFactor = distanceFromCenter / (rect.width / 2);
-        rotationAngle = baseRotationAngle * centerFactor; // Gradually approaches 0 as it nears exact center
-      }
-
-      if (distanceFromCenter < rect.width / 2 && distanceFromCenter < 20) {
-        // Very close to exact center, no rotation
-        htmlElement.style.transform = `perspective(${perspective}px) scale(1)`;
-        htmlElement.style.opacity = '1';
-      } else if (albumCenterX < centerX) {
-        // Album is to the left of center
-        htmlElement.style.transform = `perspective(${perspective}px) rotateY(${rotationAngle}deg) scale(${scaleValue})`;
-        htmlElement.style.opacity = opacityValue.toString();
-      } else {
-        // Album is to the right of center
-        htmlElement.style.transform = `perspective(${perspective}px) rotateY(-${rotationAngle}deg) scale(${scaleValue})`;
-        htmlElement.style.opacity = opacityValue.toString();
-      }
+    if (distanceFromCenter < minDistance) {
+      minDistance = distanceFromCenter;
+      centerIndex = parseInt(htmlElement.dataset.index || "0", 10);
     }
+  });
+
+  // Batch all DOM writes
+  requestAnimationFrame(() => {
+    // Update scroll indicator
+    const scrollIndicator = grid.parentElement?.querySelector(
+      ".scroll-indicator"
+    ) as HTMLElement;
+    if (scrollIndicator) {
+      const totalAlbums = albumElements.length;
+      const scrollPercentage = scrollLeft / (grid.scrollWidth - viewportWidth);
+      const activeLineIndex = Math.floor(scrollPercentage * 99);
+      const lines = scrollIndicator.querySelectorAll(".indicator-line");
+      lines.forEach((line, index) => {
+        const lineElement = line as HTMLElement;
+        if (index === activeLineIndex) {
+          lineElement.style.transform = "scale(2.5, 2.5)";
+          lineElement.style.opacity = "1";
+        } else {
+          lineElement.style.transform = "scale(1, 1)";
+          lineElement.style.opacity = "0.3";
+        }
+      });
+    }
+
+    // Determine the range of indices to style
+    const startIndex = Math.max(0, centerIndex - visibleRange);
+    const endIndex = centerIndex + visibleRange;
+
+    measurements.forEach(
+      ({
+        element,
+        rect,
+        centerX: albumCenterX,
+        distance: distanceFromCenter,
+      }) => {
+        const index = parseInt(element.dataset.index || "0", 10);
+
+        // Reset styles by default
+        element.style.transform = "none";
+        element.style.opacity = "0.5";
+        element.style.marginLeft = `${gap}px`;
+        element.style.marginRight = `${gap}px`;
+
+        // Only apply dynamic styles if within the visible range
+        if (index >= startIndex && index <= endIndex) {
+          // Calculate a dynamic rotation and scale based on distance from center
+          const maxDistance = viewportWidth / 2;
+          const rotationFactor = Math.min(distanceFromCenter / maxDistance, 1);
+          const baseRotationAngle = 30 + rotationFactor * 30;
+          const opacityValue = 1 - rotationFactor * 0.4;
+          const scaleValue = 1 - rotationFactor * 0.7;
+          const zIndexValue = Math.floor(100 - rotationFactor * 50);
+          element.style.zIndex = zIndexValue.toString();
+
+          // Apply a gradual rotation even near the center for fluidity
+          let rotationAngle = baseRotationAngle;
+          if (distanceFromCenter < rect.width / 2) {
+            const centerFactor = distanceFromCenter / (rect.width / 2);
+            rotationAngle = baseRotationAngle * centerFactor;
+          }
+
+          if (distanceFromCenter < rect.width / 2 && distanceFromCenter < 20) {
+            // Very close to exact center, no rotation
+            element.style.transform = `perspective(${perspective}px) scale(1)`;
+            element.style.opacity = "1";
+          } else if (albumCenterX < centerX) {
+            // Album is to the left of center
+            element.style.transform = `perspective(${perspective}px) rotateY(${rotationAngle}deg) scale(${scaleValue})`;
+            element.style.opacity = opacityValue.toString();
+          } else {
+            // Album is to the right of center
+            element.style.transform = `perspective(${perspective}px) rotateY(-${rotationAngle}deg) scale(${scaleValue})`;
+            element.style.opacity = opacityValue.toString();
+          }
+        }
+
+        // Apply text opacity based on distance from center
+        const textContainer = element.querySelector(
+          ".text-container"
+        ) as HTMLElement | null;
+        if (textContainer) {
+          const maxDistanceForText = viewportWidth / 8;
+          const textOpacity = Math.max(
+            0,
+            1 - distanceFromCenter / maxDistanceForText
+          );
+          if (textOpacity > 0) {
+            textContainer.classList.remove("opacity-0");
+            textContainer.style.opacity = textOpacity.toString();
+          } else {
+            textContainer.classList.add("opacity-0");
+            textContainer.style.opacity = "0";
+          }
+        }
+      }
+    );
   });
 }
 
