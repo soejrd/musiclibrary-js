@@ -26,7 +26,7 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
       <div class="wrapper w-full flex flex-col relative rounded-sm group-hover:scale-105 transition-all duration-200 ease-out overflow-visible">
         <div class="album-image w-full h-auto object-cover flex-shrink-0 relative overflow-visible">
           <img class="w-full object-cover" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
-          <img class="album-image--shadow w-full object-cover pointer-events-none absolute top-0 left-0 transform -scale-200 transform-origin-center -z-1 opacity-0 transition-all duration-[1s] ease-out" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
+          <img class="album-image--shadow group-hover:opacity-12 group-hover:blur-[64px] w-full object-cover pointer-events-none absolute top-0 left-0 transform -scale-200 transform-origin-center -z-1 opacity-0 transition-all duration-[1s] ease-out" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
           <div class="animate-pulse bg-zinc-800 h-full w-full object-cover"></div>
         </div>
         <div class="text-container mt-6 flex flex-col opacity-0 transition-opacity duration-100 ease-out">

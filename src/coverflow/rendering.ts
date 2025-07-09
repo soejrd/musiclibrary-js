@@ -5,7 +5,7 @@ import { getGridElement } from "../grid/gridLayout";
 
 //controls
 const perspective = 1000;
-const gap = -85; //75
+const gap = -100;
 
 // A Set to track which indices are currently rendered in coverflow view
 const renderedIndices = new Set<number>();
@@ -192,7 +192,7 @@ export function updateCoverflowStyles(): void {
   const scrollLeft = grid.scrollLeft;
   const centerX = viewportWidth / 2 + scrollLeft;
   const albumElements = grid.querySelectorAll(".coverflow-item");
-  const visibleRange = 8; // Number of albums to style on each side of the center
+  const visibleRange = 5; // Number of albums to style on each side of the center
   let centerIndex = -1;
   let minDistance = Infinity;
 
@@ -269,7 +269,7 @@ export function updateCoverflowStyles(): void {
 
         // Reset styles by default
         element.style.transform = "none";
-        element.style.opacity = "0.5";
+        element.style.opacity = "1";
         element.style.marginLeft = `${gap}px`;
         element.style.marginRight = `${gap}px`;
 
@@ -279,7 +279,6 @@ export function updateCoverflowStyles(): void {
           const maxDistance = viewportWidth / 2;
           const rotationFactor = Math.min(distanceFromCenter / maxDistance, 1);
           const baseRotationAngle = 30 + rotationFactor * 30;
-          const opacityValue = 1 - rotationFactor * 0.4;
           const scaleValue = 1 - rotationFactor * 0.7;
           const zIndexValue = Math.floor(100 - rotationFactor * 50);
           element.style.zIndex = zIndexValue.toString();
@@ -294,15 +293,12 @@ export function updateCoverflowStyles(): void {
           if (distanceFromCenter < rect.width / 2 && distanceFromCenter < 20) {
             // Very close to exact center, no rotation
             element.style.transform = `perspective(${perspective}px) scale(1)`;
-            element.style.opacity = "1";
           } else if (albumCenterX < centerX) {
             // Album is to the left of center
             element.style.transform = `perspective(${perspective}px) rotateY(${rotationAngle}deg) scale(${scaleValue})`;
-            element.style.opacity = opacityValue.toString();
           } else {
             // Album is to the right of center
             element.style.transform = `perspective(${perspective}px) rotateY(-${rotationAngle}deg) scale(${scaleValue})`;
-            element.style.opacity = opacityValue.toString();
           }
         }
 
