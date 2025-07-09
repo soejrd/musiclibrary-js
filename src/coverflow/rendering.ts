@@ -42,7 +42,7 @@ export function renderCoverflowAlbums(): void {
     // Create 100 indicator lines
     for (let i = 0; i < 80; i++) {
       const line = document.createElement('div');
-      line.classList.add('indicator-line', 'bg-white', 'dark:bg-gray-200', 'opacity-30', 'transition-all', 'duration-300', 'ease-out', 'w-[1px]', 'h-3');
+      line.classList.add('indicator-line', 'bg-zinc-950', 'dark:bg-gray-200', 'opacity-30', 'transition-all', 'duration-300', 'ease-out', 'w-[1px]', 'h-3');
       // line.style.width = '1px';
       // line.style.height = '12px';
       line.dataset.index = i.toString();

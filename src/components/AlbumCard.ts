@@ -23,15 +23,15 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
     if (isCoverflow) {
       // Layout for coverflow mode: title and artist under the image, visibility handled by CSS for center album
       card.innerHTML = `
-      <div class="wrapper w-full flex flex-col relative rounded-sm group-hover:shadow-md transition-all duration-200 ease-out overflow-visible">
+      <div class="wrapper w-full flex flex-col relative rounded-sm group-hover:scale-105 transition-all duration-200 ease-out overflow-visible">
         <div class="album-image w-full h-auto object-cover flex-shrink-0 relative overflow-visible">
           <img class="w-full object-cover" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
-          <img class="album-image--shadow w-full object-cover absolute top-0 left-0 transform -scale-200 transform-origin-center -z-1 opacity-0 transition-all duration-[1s] ease-out" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
+          <img class="album-image--shadow w-full object-cover pointer-events-none absolute top-0 left-0 transform -scale-200 transform-origin-center -z-1 opacity-0 transition-all duration-[1s] ease-out" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
           <div class="animate-pulse bg-zinc-800 h-full w-full object-cover"></div>
         </div>
         <div class="text-container mt-6 flex flex-col opacity-0 transition-opacity duration-100 ease-out">
-          <h3 class="text-4xl font-bold text-zinc-100 mb-2 truncate">${albumName || 'Unknown Album'}</h3>
-          <p class="text-lg text-zinc-300 truncate">${artistName || 'Unknown Artist'}</p>
+          <h3 class="text-4xl font-bold dark:text-zinc-100 text-zinc-950 mb-2 truncate">${albumName || 'Unknown Album'}</h3>
+          <p class="text-lg dark:text-zinc-300 text-zinc-600 truncate">${artistName || 'Unknown Artist'}</p>
         </div>
       </div>
     `;
