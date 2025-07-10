@@ -31,18 +31,6 @@ export function renderCoverflowAlbums(): void {
   const filteredLibrary = getFilteredLibrary();
   const totalAlbums = filteredLibrary.length;
 
-  // Clear any existing grid styling that might interfere with coverflow
-  grid.style.height = "auto";
-  grid.style.overflowX = "auto";
-  grid.style.overflowY = "visible";
-  grid.style.whiteSpace = "nowrap";
-  grid.style.display = "flex";
-  grid.style.alignItems = "center";
-  grid.style.justifyContent = "flex-start";
-  grid.style.scrollSnapType = "x mandatory";
-  grid.classList.add("py-40"); // Add padding using Tailwind class to accommodate shadows without breaking snap
-  grid.classList.add("coverflow-mode"); // Add class to apply coverflow-specific styles like scrim
-
   // Create scroll indicator container
   let scrollIndicator = grid.parentElement?.querySelector(
     ".scroll-indicator"
@@ -77,8 +65,6 @@ export function renderCoverflowAlbums(): void {
         "w-[1px]",
         "h-3"
       );
-      // line.style.width = '1px';
-      // line.style.height = '12px';
       line.dataset.index = i.toString();
       scrollIndicator.appendChild(line);
     }
@@ -153,24 +139,6 @@ export function clearCoverflowAlbums(): void {
   grid.innerHTML = "";
   renderedIndices.clear();
 
-  // Remove coverflow-specific class
-  grid.classList.remove("coverflow-mode");
-
-  // Remove scroll indicator
-  const scrollIndicator =
-    grid.parentElement?.querySelector(".scroll-indicator");
-  if (scrollIndicator) {
-    scrollIndicator.remove();
-  }
-
-  // Reset grid styling to default or grid-specific styles
-  grid.style.overflowX = "";
-  grid.style.overflowY = "";
-  grid.style.whiteSpace = "";
-  grid.style.display = "";
-  grid.style.alignItems = "";
-  grid.style.justifyContent = "";
-  grid.style.scrollSnapType = "";
 }
 
 /**

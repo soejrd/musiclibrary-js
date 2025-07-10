@@ -35,11 +35,6 @@ export function renderVisibleAlbums(): void {
   const grid = getGridElement();
   if (!grid) return;
 
-  // Add padding to grid container using Tailwind class for consistency
-  grid.classList.add('py-5');
-  // Ensure coverflow-mode class is removed in grid mode
-  grid.classList.remove('coverflow-mode');
-
   const { startIndex, endIndex } = getVisibleRange();
   const { columns, rowHeight, itemWidth } = getGridDimensions();
   const filteredLibrary = getFilteredLibrary();

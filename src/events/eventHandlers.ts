@@ -87,13 +87,33 @@ function renderControlButtons(): void {
         const zoomOutBtn = document.getElementById("zoomOutBtn");
         if (zoomInBtn && zoomOutBtn) {
           if (newMode === "coverflow") {
-            zoomInBtn.classList.add("w-0", "opacity-0", "-translate-x-full", "collapse");
-            zoomOutBtn.classList.add("w-0", "opacity-0", "translate-x-full", "collapse");
+            zoomInBtn.classList.add(
+              "w-0",
+              "opacity-0",
+              "-translate-x-full",
+              "collapse"
+            );
+            zoomOutBtn.classList.add(
+              "w-0",
+              "opacity-0",
+              "translate-x-full",
+              "collapse"
+            );
             zoomInBtn.classList.remove("px-2");
             zoomOutBtn.classList.remove("px-2");
           } else {
-            zoomInBtn.classList.remove("w-0", "opacity-0", "-translate-x-full", "collapse");
-            zoomOutBtn.classList.remove("w-0", "opacity-0", "translate-x-full", "collapse");
+            zoomInBtn.classList.remove(
+              "w-0",
+              "opacity-0",
+              "-translate-x-full",
+              "collapse"
+            );
+            zoomOutBtn.classList.remove(
+              "w-0",
+              "opacity-0",
+              "translate-x-full",
+              "collapse"
+            );
             zoomInBtn.classList.add("px-2");
             zoomOutBtn.classList.add("px-2");
           }

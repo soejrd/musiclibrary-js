@@ -1,4 +1,5 @@
 import { Album } from "../types/types";
+import { getViewMode } from "@/grid/gridLayout";
 
 /**
  * Creates an album card element with the given properties.
@@ -16,11 +17,9 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
   card.setAttribute('href', link || '#');
   card.className = 'album-card relative flex flex-col p-2 transition-all duration-500 ease-out group hover:z-20';
 
-  // Determine if in coverflow mode by checking the grid container's view mode
-  const grid = document.getElementById("grid");
-  const isCoverflow = grid && grid.style.display === 'flex' && grid.style.overflowX === 'auto';
+  const viewMode = getViewMode();
 
-    if (isCoverflow) {
+    if (viewMode == "coverflow") {
       // Layout for coverflow mode: title and artist under the image, visibility handled by CSS for center album
       card.innerHTML = `
       <div class="wrapper w-full flex flex-col relative rounded-sm group-hover:scale-105 transition-all duration-200 ease-out overflow-visible">
