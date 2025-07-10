@@ -2,6 +2,7 @@ import { Album } from "../types/types";
 import { AlbumCard } from "../components/AlbumCard";
 import { getFilteredLibrary } from "../data/albumData";
 import { getGridElement } from "../grid/gridLayout";
+import { clearAlbums } from "@/events/eventHandlers";
 
 //controls
 const perspective = 1000;
@@ -133,12 +134,7 @@ export function updateCoverflowRenderedAlbums(centerIndex: number): void {
  * Clears all rendered albums from the coverflow view.
  */
 export function clearCoverflowAlbums(): void {
-  const grid = getGridElement();
-  if (!grid) return;
-
-  grid.innerHTML = "";
-  renderedIndices.clear();
-
+  clearAlbums(renderedIndices);
 }
 
 /**

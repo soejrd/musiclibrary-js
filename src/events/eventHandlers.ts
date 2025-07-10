@@ -12,10 +12,12 @@ import {
   zoomOut,
   setViewMode,
   getViewMode,
+  getGridElement
 } from "../grid/gridLayout";
+
 import {
-  clearRenderedAlbums,
-  renderVisibleAlbums,
+  clearGridAlbums,
+  renderGridAlbums,
   updateRenderedAlbums,
 } from "../grid/rendering";
 import {
@@ -51,7 +53,7 @@ function renderControlButtons(): void {
           updateItemSize();
           calculateGridLayout(getTotalAlbums());
           updateRenderedAlbums();
-          renderVisibleAlbums();
+          renderGridAlbums();
         }
       },
     },
@@ -63,7 +65,7 @@ function renderControlButtons(): void {
           updateItemSize();
           calculateGridLayout(getTotalAlbums());
           updateRenderedAlbums();
-          renderVisibleAlbums();
+          renderGridAlbums();
         }
       },
     },
@@ -206,7 +208,7 @@ function debounce<T extends (...args: any[]) => any>(
 function renderAlbumsBasedOnViewMode(): void {
   const viewMode = getViewMode();
   if (viewMode === "grid") {
-    renderVisibleAlbums();
+    renderGridAlbums();
   } else if (viewMode === "coverflow") {
     renderCoverflowAlbums();
   }
@@ -218,7 +220,7 @@ function renderAlbumsBasedOnViewMode(): void {
 function clearAlbumsBasedOnViewMode(): void {
   const viewMode = getViewMode();
   if (viewMode === "grid") {
-    clearRenderedAlbums();
+    clearGridAlbums();
   } else if (viewMode === "coverflow") {
     clearCoverflowAlbums();
   }
@@ -277,7 +279,7 @@ export function setupEventListeners(): void {
         updateItemSize();
         calculateGridLayout(getTotalAlbums());
         updateRenderedAlbums();
-        renderVisibleAlbums();
+        renderGridAlbums();
       }
     }, 200)
   );
@@ -287,7 +289,7 @@ export function setupEventListeners(): void {
   window.addEventListener("scroll", () => {
     if (getViewMode() === "grid" && !ticking) {
       requestAnimationFrame(() => {
-        renderVisibleAlbums();
+        renderGridAlbums();
         ticking = false;
       });
       ticking = true;
@@ -357,6 +359,15 @@ export function setupEventListeners(): void {
 
   // Theme handling is now managed in renderControlButtons
 }
+
+export function clearAlbums(renderedIndices: Set<number>): void {
+  const grid = getGridElement();
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  renderedIndices.clear();
+}
+
 
 /**
  * Initializes the application on DOM content loaded.

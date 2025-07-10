@@ -114,7 +114,7 @@ export function getGridElement(): HTMLElement | null {
  * @param mode - The view mode to set ('grid' or 'coverflow').
  */
 export function setViewMode(mode: "grid" | "coverflow"): void {
-  let coverflowClassList = ["coverflow-mode", "py-40","h-auto", "overflow-x-auto", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "scroll-snap-type-x-mandatory"];
+  let coverflowClassList = ["coverflow-mode", "py-40","h-auto", "overflow-x-auto", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "snap-x", "snap-mandatory"];
   const grid = getGridElement();
   if (!grid) return;
   viewMode = mode;

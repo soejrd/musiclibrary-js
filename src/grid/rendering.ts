@@ -2,6 +2,8 @@ import { Album } from "../types/types";
 import { AlbumCard } from "@/components/AlbumCard";
 import { getFilteredLibrary } from "../data/albumData";
 import { getGridDimensions, getGridElement } from "./gridLayout";
+import { clearAlbums } from "@/events/eventHandlers";
+
 
 // A Set to track which indices are currently rendered
 const renderedIndices = new Set<number>();
@@ -31,7 +33,7 @@ function getVisibleRange(): { startIndex: number; endIndex: number } {
 /**
  * Renders visible albums in the grid using virtual scrolling.
  */
-export function renderVisibleAlbums(): void {
+export function renderGridAlbums(): void {
   const grid = getGridElement();
   if (!grid) return;
 
@@ -107,18 +109,14 @@ export function updateRenderedAlbums(): void {
 /**
  * Clears all rendered albums from the grid.
  */
-export function clearRenderedAlbums(): void {
-  const grid = getGridElement();
-  if (!grid) return;
-
-  grid.innerHTML = '';
-  renderedIndices.clear();
+export function clearGridAlbums(): void {
+clearAlbums(renderedIndices);
 }
 
 /**
  * Gets the set of currently rendered indices.
  * @returns Set of indices of rendered albums.
  */
-export function getRenderedIndices(): Set<number> {
+export function getGridRenderedIndices(): Set<number> {
   return renderedIndices;
 }
