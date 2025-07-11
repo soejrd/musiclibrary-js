@@ -115,6 +115,7 @@ export function getGridElement(): HTMLElement | null {
  */
 export function setViewMode(mode: "grid" | "coverflow"): void {
   let coverflowClassList = ["coverflow-mode", "py-40","h-auto", "overflow-x-auto", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "snap-x", "snap-mandatory"];
+  let gridClassList = ["grid-mode", "mt-30"];
   const grid = getGridElement();
   if (!grid) return;
   viewMode = mode;
@@ -127,7 +128,10 @@ export function setViewMode(mode: "grid" | "coverflow"): void {
       scrollIndicator.remove();
     }
     grid.classList.remove(...coverflowClassList);
+    grid.classList.add(...gridClassList);
+
   } else {
+    grid.classList.remove(...gridClassList);
     grid.classList.add(...coverflowClassList);
     updateCoverflowStyles();
     grid.style.height = "auto";
