@@ -12,11 +12,14 @@ const gap = -100;
 const renderedIndices = new Set<number>();
 
 // Cache for coverflow measurements to avoid recalculations
-const measurementCache = new Map<number, {
-  rect: DOMRect;
-  centerX: number;
-  distance: number;
-}>();
+const measurementCache = new Map<
+  number,
+  {
+    rect: DOMRect;
+    centerX: number;
+    distance: number;
+  }
+>();
 
 // Throttle update frequency (ms)
 const UPDATE_THROTTLE = 16; // ~60fps
@@ -71,8 +74,44 @@ export function renderCoverflowAlbums(): void {
     }
     if (grid.parentElement) {
       grid.parentElement.insertBefore(scrollIndicator, grid);
+
+      // Add click event listener to scroll indicator
+      scrollIndicator.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+        const index = parseInt(target.dataset.index || "0");
+        const rowHeight = parseInt(
+          getComputedStyle(grid).getPropertyValue("--row-height")
+        );
+        grid.scrollTo({
+          top: index * rowHeight,
+          behavior: "smooth",
+        });
+      });
     }
   }
+  scrollIndicator.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+
+    const coordinate = event.clientX - scrollIndicator.getBoundingClientRect().left;
+    const percentage = coordinate / scrollIndicator.getBoundingClientRect().width;
+    const targetAlbum = filteredLibrary[Math.floor((totalAlbums - 1) * (percentage))];
+    const targetAlbumElement = grid.querySelector(
+      `[data-index="${filteredLibrary.indexOf(targetAlbum)}"]`
+    )
+    if (targetAlbumElement) {
+      targetAlbumElement.scrollIntoView({ behavior: "smooth" });
+    }
+    
+    //targetAlbum.scrollIntoView({ behavior: "smooth" });
+
+
+    // grid.scrollTo({
+    //   left: (grid.scrollWidth / 1.75) * percentage,
+    //   behavior: "smooth",
+    // });
+
+    console.log(coordinate, percentage);
+  });
 
   // Render all albums to prevent scrolling issues
   for (let i = 0; i < totalAlbums; i++) {
@@ -103,9 +142,7 @@ export function renderCoverflowAlbums(): void {
 
   // Scroll to the 5th album to ensure proper perspective effect
   if (totalAlbums > 5) {
-    const fifthElement = grid.querySelector(
-      `[data-index="4"]`
-    ) as HTMLElement;
+    const fifthElement = grid.querySelector(`[data-index="4"]`) as HTMLElement;
     if (fifthElement) {
       fifthElement.scrollIntoView({
         behavior: "instant",
@@ -172,21 +209,25 @@ export function updateCoverflowStyles(): void {
   albumElements.forEach((element) => {
     const htmlElement = element as HTMLElement;
     const index = parseInt(htmlElement.dataset.index || "0", 10);
-    
+
     // Get fresh measurements during scroll for fluid animations
     const rect = element.getBoundingClientRect();
     const albumCenterX = rect.left + rect.width / 2 + scrollLeft;
     const distanceFromCenter = Math.abs(centerX - albumCenterX);
-    
+
     // Store in cache (used for initial render)
-    measurementCache.set(index, { rect, centerX: albumCenterX, distance: distanceFromCenter });
+    measurementCache.set(index, {
+      rect,
+      centerX: albumCenterX,
+      distance: distanceFromCenter,
+    });
 
     measurements.push({
       element: htmlElement,
       rect,
       centerX: albumCenterX,
       distance: distanceFromCenter,
-      index
+      index,
     });
 
     if (distanceFromCenter < minDistance) {
