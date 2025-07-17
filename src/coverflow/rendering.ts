@@ -7,26 +7,18 @@ import { clearAlbums } from "../events/eventHandlers";
 //controls
 const perspective = 1000;
 const gap = -100;
+const INDICATOR_LINES = 80;
 
 // A Set to track which indices are currently rendered in coverflow view
 const renderedIndices = new Set<number>();
-
-// Cache for coverflow measurements to avoid recalculations
-const measurementCache = new Map<
-  number,
-  {
-    rect: DOMRect;
-    centerX: number;
-    distance: number;
-  }
->();
 
 // Throttle update frequency (ms)
 const UPDATE_THROTTLE = 16; // ~60fps
 let lastUpdateTime = 0;
 
 /**
- * Renders albums in a coverflow layout, limiting to a visible range plus buffer.
+ * Renders an initial small set of albums for the coverflow layout.
+ * The rest of the albums will be rendered on-demand as the user scrolls.
  */
 export function renderCoverflowAlbums(): void {
   const grid = getGridElement();
@@ -34,6 +26,13 @@ export function renderCoverflowAlbums(): void {
 
   const filteredLibrary = getFilteredLibrary();
   const totalAlbums = filteredLibrary.length;
+  const initialRenderCount = Math.min(totalAlbums, 20); // Render up to 20 albums initially
+
+  // A dummy scrollbar element to set the scrollable width
+  const scrollbar = document.createElement("div");
+  scrollbar.style.width = `${totalAlbums * 150}px`; // Approximate width
+  scrollbar.style.height = "1px";
+  grid.appendChild(scrollbar);
 
   // Create scroll indicator container
   let scrollIndicator = grid.parentElement?.querySelector(
@@ -55,8 +54,8 @@ export function renderCoverflowAlbums(): void {
       "z-105"
     );
     scrollIndicator.style.height = "30px";
-    // Create 100 indicator lines
-    for (let i = 0; i < 80; i++) {
+    // Create indicator lines
+    for (let i = 0; i < INDICATOR_LINES; i++) {
       const line = document.createElement("div");
       line.classList.add(
         "indicator-line",
@@ -74,70 +73,18 @@ export function renderCoverflowAlbums(): void {
     }
     if (grid.parentElement) {
       grid.parentElement.insertBefore(scrollIndicator, grid);
-
-      // Add click event listener to scroll indicator
-      scrollIndicator.addEventListener("click", (event) => {
-        const target = event.target as HTMLElement;
-        const index = parseInt(target.dataset.index || "0");
-        const rowHeight = parseInt(
-          getComputedStyle(grid).getPropertyValue("--row-height")
-        );
-        grid.scrollTo({
-          top: index * rowHeight,
-          behavior: "smooth",
-        });
-      });
     }
+    scrollIndicator.addEventListener("click", (e) =>
+      handleScrollIndicatorClick(e, grid, totalAlbums)
+    );
   }
-  scrollIndicator.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
 
-    const coordinate = event.clientX - scrollIndicator.getBoundingClientRect().left;
-    const percentage = coordinate / scrollIndicator.getBoundingClientRect().width;
-    const targetAlbum = filteredLibrary[Math.floor((totalAlbums - 1) * (percentage))];
-    const targetAlbumElement = grid.querySelector(
-      `[data-index="${filteredLibrary.indexOf(targetAlbum)}"]`
-    )
-    if (targetAlbumElement) {
-      targetAlbumElement.scrollIntoView({ behavior: "smooth" });
-    }
-    
-    //targetAlbum.scrollIntoView({ behavior: "smooth" });
-
-
-    // grid.scrollTo({
-    //   left: (grid.scrollWidth / 1.75) * percentage,
-    //   behavior: "smooth",
-    // });
-
-    console.log(coordinate, percentage);
-  });
-
-  // Render all albums to prevent scrolling issues
-  for (let i = 0; i < totalAlbums; i++) {
-    if (!renderedIndices.has(i)) {
-      const album: Album = filteredLibrary[i];
-      const albumElement = AlbumCard({
-        img: album?.img,
-        album: album?.album,
-        artist: album?.artist,
-        link: album?.link,
-      }) as HTMLElement;
-
-      // Apply coverflow-specific class for CSS styling
-      albumElement.classList.add("coverflow-item");
-      albumElement.classList.add("w-sm");
-      albumElement.style.position = "relative";
-      albumElement.style.display = "inline-block";
-      albumElement.style.scrollSnapAlign = "center";
-      albumElement.style.flexShrink = "0";
-
-      // Optionally add dataset for tracking
-      albumElement.dataset.index = i.toString();
-
-      grid.appendChild(albumElement);
-      renderedIndices.add(i);
-    }
+  // Render initial albums
+  for (let i = 0; i < initialRenderCount; i++) {
+    const album: Album = filteredLibrary[i];
+    const albumElement = createAlbumElement(album, i);
+    grid.appendChild(albumElement);
+    renderedIndices.add(i);
   }
 
   // Scroll to the 5th album to ensure proper perspective effect
@@ -151,32 +98,56 @@ export function renderCoverflowAlbums(): void {
       });
     }
   }
-}
 
-/**
- * Updates the rendered albums in coverflow view based on scroll position.
- * @param centerIndex The index of the album closest to the viewport center.
- */
-export function updateCoverflowRenderedAlbums(centerIndex: number): void {
-  const grid = getGridElement();
-  if (!grid) return;
-
-  const filteredLibrary = getFilteredLibrary();
-  const totalAlbums = filteredLibrary.length;
-  // No removal of albums; once rendered, they stay in the DOM to prevent scrolling issues
-  // This function now only updates the center index for styling purposes
+  // Manually trigger style update after initial render and scroll
+  updateCoverflowStyles();
 }
 
 /**
  * Clears all rendered albums from the coverflow view.
  */
 export function clearCoverflowAlbums(): void {
-  clearAlbums(renderedIndices);
+  const grid = getGridElement();
+  if (!grid) return;
+
+  // More performant and safer way to clear children
+  while (grid.firstChild) {
+    grid.removeChild(grid.firstChild);
+  }
+  renderedIndices.clear();
 }
 
 /**
- * Updates styles for coverflow items based on their position in the viewport.
- * Only styles albums within the visible range (center plus 8 on each side).
+ * Creates an album element for coverflow view.
+ * @param album - The album data.
+ * @param index - The index of the album.
+ * @returns The created HTMLElement.
+ */
+function createAlbumElement(album: Album, index: number): HTMLElement {
+  const albumElement = AlbumCard({
+    img: album?.img,
+    album: album?.album,
+    artist: album?.artist,
+    link: album?.link,
+  }) as HTMLElement;
+
+  albumElement.classList.add("coverflow-item", "w-sm");
+  albumElement.style.position = "absolute"; // Use absolute positioning
+  albumElement.style.display = "inline-block";
+  albumElement.style.scrollSnapAlign = "center";
+  albumElement.style.flexShrink = "0";
+  albumElement.dataset.index = index.toString();
+
+  // Position the element based on its index
+  const baseWidth = 150; // Approximate width of an item
+  albumElement.style.left = `${index * baseWidth}px`;
+
+  return albumElement;
+}
+
+/**
+ * Updates styles and manages rendered albums for coverflow view.
+ * Implements virtualization to only render and style visible albums.
  */
 export function updateCoverflowStyles(): void {
   const now = performance.now();
@@ -188,64 +159,63 @@ export function updateCoverflowStyles(): void {
   const grid = getGridElement();
   if (!grid) return;
 
-  // Batch all DOM reads first
+  const filteredLibrary = getFilteredLibrary();
+  const totalAlbums = filteredLibrary.length;
   const viewportWidth = window.innerWidth;
   const scrollLeft = grid.scrollLeft;
   const centerX = viewportWidth / 2 + scrollLeft;
-  const albumElements = grid.querySelectorAll(".coverflow-item");
-  const visibleRange = 5; // Number of albums to style on each side of the center
-  let centerIndex = -1;
-  let minDistance = Infinity;
+  const visibleRange = 10; // Render 10 albums on each side of the center
+  const baseWidth = 150; // Approximate width of an item
 
-  // First pass: Collect all measurements and find center element
-  const measurements: {
-    element: HTMLElement;
-    rect: DOMRect;
-    centerX: number;
-    distance: number;
-    index: number;
-  }[] = [];
+  // Estimate the center index based on scroll position
+  const centerIndex = Math.floor(scrollLeft / baseWidth);
 
-  albumElements.forEach((element) => {
-    const htmlElement = element as HTMLElement;
-    const index = parseInt(htmlElement.dataset.index || "0", 10);
+  // Determine the range of indices that should be visible
+  const startIndex = Math.max(0, centerIndex - visibleRange);
+  const endIndex = Math.min(totalAlbums - 1, centerIndex + visibleRange);
 
-    // Get fresh measurements during scroll for fluid animations
-    const rect = element.getBoundingClientRect();
-    const albumCenterX = rect.left + rect.width / 2 + scrollLeft;
-    const distanceFromCenter = Math.abs(centerX - albumCenterX);
+  const requiredIndices = new Set<number>();
+  for (let i = startIndex; i <= endIndex; i++) {
+    requiredIndices.add(i);
+  }
 
-    // Store in cache (used for initial render)
-    measurementCache.set(index, {
-      rect,
-      centerX: albumCenterX,
-      distance: distanceFromCenter,
-    });
-
-    measurements.push({
-      element: htmlElement,
-      rect,
-      centerX: albumCenterX,
-      distance: distanceFromCenter,
-      index,
-    });
-
-    if (distanceFromCenter < minDistance) {
-      minDistance = distanceFromCenter;
-      centerIndex = parseInt(htmlElement.dataset.index || "0", 10);
+  // --- DOM Reconciliation ---
+  // Remove albums that are no longer in the required range
+  renderedIndices.forEach((index) => {
+    if (!requiredIndices.has(index)) {
+      const elementToRemove = grid.querySelector(`[data-index="${index}"]`);
+      if (elementToRemove) {
+        grid.removeChild(elementToRemove);
+      }
+      renderedIndices.delete(index);
     }
   });
 
-  // Batch all DOM writes
+  // Add albums that are in the required range but not yet rendered
+  requiredIndices.forEach((index) => {
+    if (!renderedIndices.has(index)) {
+      const album = filteredLibrary[index];
+      const albumElement = createAlbumElement(album, index);
+      grid.appendChild(albumElement);
+      renderedIndices.add(index);
+    }
+  });
+
+  // --- Style Updates ---
+  const albumElements = grid.querySelectorAll(".coverflow-item");
+
   requestAnimationFrame(() => {
     // Update scroll indicator
     const scrollIndicator = grid.parentElement?.querySelector(
       ".scroll-indicator"
     ) as HTMLElement;
     if (scrollIndicator) {
-      const totalAlbums = albumElements.length;
-      const scrollPercentage = scrollLeft / (grid.scrollWidth - viewportWidth);
-      const activeLineIndex = Math.floor(scrollPercentage * 99);
+      const totalContentWidth = totalAlbums * baseWidth;
+      const scrollPercentage =
+        scrollLeft / (totalContentWidth - viewportWidth);
+      const activeLineIndex = Math.floor(
+        scrollPercentage * (INDICATOR_LINES - 1)
+      );
       const lines = scrollIndicator.querySelectorAll(".indicator-line");
       lines.forEach((line, index) => {
         const lineElement = line as HTMLElement;
@@ -258,76 +228,118 @@ export function updateCoverflowStyles(): void {
         }
       });
     }
+    
+    albumElements.forEach((element) => {
+      const htmlElement = element as HTMLElement;
+      const index = parseInt(htmlElement.dataset.index || "0", 10);
 
-    // Determine the range of indices to style
-    const startIndex = Math.max(0, centerIndex - visibleRange);
-    const endIndex = centerIndex + visibleRange;
+      const rect = htmlElement.getBoundingClientRect();
+      const albumCenterX = rect.left + rect.width / 2 + scrollLeft;
+      const distanceFromCenter = Math.abs(centerX - albumCenterX);
 
-    measurements.forEach(
-      ({
-        element,
-        rect,
-        centerX: albumCenterX,
-        distance: distanceFromCenter,
-      }) => {
-        const index = parseInt(element.dataset.index || "0", 10);
+      // Reset styles by default
+      htmlElement.style.transform = "none";
+      htmlElement.style.opacity = "1";
+      htmlElement.style.marginLeft = `${gap}px`;
+      htmlElement.style.marginRight = `${gap}px`;
 
-        // Reset styles by default
-        element.style.transform = "none";
-        element.style.opacity = "1";
-        element.style.marginLeft = `${gap}px`;
-        element.style.marginRight = `${gap}px`;
+      // Calculate a dynamic rotation and scale based on distance from center
+      const maxDistance = viewportWidth / 2;
+      const rotationFactor = Math.min(distanceFromCenter / maxDistance, 1);
+      const baseRotationAngle = 30 + rotationFactor * 30;
+      const scaleValue = 1 - rotationFactor * 0.7;
+      const zIndexValue = Math.floor(100 - rotationFactor * 50);
+      htmlElement.style.zIndex = zIndexValue.toString();
 
-        // Only apply dynamic styles if within the visible range
-        if (index >= startIndex && index <= endIndex) {
-          // Calculate a dynamic rotation and scale based on distance from center
-          const maxDistance = viewportWidth / 2;
-          const rotationFactor = Math.min(distanceFromCenter / maxDistance, 1);
-          const baseRotationAngle = 30 + rotationFactor * 30;
-          const scaleValue = 1 - rotationFactor * 0.7;
-          const zIndexValue = Math.floor(100 - rotationFactor * 50);
-          element.style.zIndex = zIndexValue.toString();
+      // Apply a gradual rotation even near the center for fluidity
+      let rotationAngle = baseRotationAngle;
+      if (distanceFromCenter < rect.width / 2) {
+        const centerFactor = distanceFromCenter / (rect.width / 2);
+        rotationAngle = baseRotationAngle * centerFactor;
+      }
 
-          // Apply a gradual rotation even near the center for fluidity
-          let rotationAngle = baseRotationAngle;
-          if (distanceFromCenter < rect.width / 2) {
-            const centerFactor = distanceFromCenter / (rect.width / 2);
-            rotationAngle = baseRotationAngle * centerFactor;
-          }
+      if (distanceFromCenter < rect.width / 2 && distanceFromCenter < 20) {
+        htmlElement.style.transform = `perspective(${perspective}px) scale(1)`;
+      } else if (albumCenterX < centerX) {
+        htmlElement.style.transform = `perspective(${perspective}px) rotateY(${rotationAngle}deg) scale(${scaleValue})`;
+      } else {
+        htmlElement.style.transform = `perspective(${perspective}px) rotateY(-${rotationAngle}deg) scale(${scaleValue})`;
+      }
 
-          if (distanceFromCenter < rect.width / 2 && distanceFromCenter < 20) {
-            // Very close to exact center, no rotation
-            element.style.transform = `perspective(${perspective}px) scale(1)`;
-          } else if (albumCenterX < centerX) {
-            // Album is to the left of center
-            element.style.transform = `perspective(${perspective}px) rotateY(${rotationAngle}deg) scale(${scaleValue})`;
-          } else {
-            // Album is to the right of center
-            element.style.transform = `perspective(${perspective}px) rotateY(-${rotationAngle}deg) scale(${scaleValue})`;
-          }
-        }
-
-        // Apply text opacity based on distance from center
-        const textContainer = element.querySelector(
-          ".text-container"
-        ) as HTMLElement | null;
-        if (textContainer) {
-          const maxDistanceForText = viewportWidth / 8;
-          const textOpacity = Math.max(
-            0,
-            1 - distanceFromCenter / maxDistanceForText
-          );
-          if (textOpacity > 0) {
-            textContainer.classList.remove("opacity-0");
-            textContainer.style.opacity = textOpacity.toString();
-          } else {
-            textContainer.classList.add("opacity-0");
-            textContainer.style.opacity = "0";
-          }
+      // Apply text opacity based on distance from center
+      const textContainer = htmlElement.querySelector(
+        ".text-container"
+      ) as HTMLElement | null;
+      if (textContainer) {
+        const maxDistanceForText = viewportWidth / 8;
+        const textOpacity = Math.max(
+          0,
+          1 - distanceFromCenter / maxDistanceForText
+        );
+        if (textOpacity > 0) {
+          textContainer.classList.remove("opacity-0");
+          textContainer.style.opacity = textOpacity.toString();
+        } else {
+          textContainer.classList.add("opacity-0");
+          textContainer.style.opacity = "0";
         }
       }
-    );
+    });
   });
+}
+
+/**
+ * Calculates the target scroll position based on a click event on the scroll indicator.
+ *
+ * @param e - The mouse event from the click.
+ * @param grid - The grid container element.
+ * @param totalAlbums - The total number of albums.
+ */
+function handleScrollIndicatorClick(
+  e: MouseEvent,
+  grid: HTMLElement,
+  totalAlbums: number
+): void {
+  const baseWidth = 150;
+  const viewportWidth = window.innerWidth;
+  const indicatorRect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+  const clickX = e.clientX - indicatorRect.left;
+  const clickPercentage = clickX / indicatorRect.width;
+
+  // Calculate the total width of the content, including gaps
+  const totalContentWidth = totalAlbums * (baseWidth + Math.abs(gap));
+
+  // Determine the target scroll position
+  const targetScrollLeft = clickPercentage * (totalContentWidth - viewportWidth);
+
+  // Find the album index closest to the click position
+  const targetIndex = Math.floor(
+    (targetScrollLeft + viewportWidth / 2) / (baseWidth + Math.abs(gap))
+  );
+
+  // Get the target album element
+  const targetAlbum = grid.querySelector(
+    `[data-index="${targetIndex}"]`
+  ) as HTMLElement;
+
+  if (targetAlbum) {
+    // Calculate the exact position to scroll to center the album
+    const targetAlbumLeft = targetAlbum.offsetLeft;
+    const targetAlbumWidth = targetAlbum.offsetWidth;
+    const scrollToPosition =
+      targetAlbumLeft - viewportWidth / 2 + targetAlbumWidth / 2;
+
+    grid.scrollTo({
+      left: scrollToPosition,
+      behavior: "smooth",
+    });
+  } else {
+    // Fallback for unrendered albums
+    grid.scrollTo({
+      left: targetScrollLeft,
+      behavior: "smooth",
+    });
+  }
 }
 
 /**

@@ -407,7 +407,20 @@ export function clearAlbums(renderedIndices: Set<number>): void {
   const grid = getGridElement();
   if (!grid) return;
 
-  grid.innerHTML = '';
+  // Remove all children except the dummy scrollbar if it exists
+  const children = Array.from(grid.children);
+  children.forEach(child => {
+    // a more robust check for the scrollbar might be needed
+    if ((child as HTMLElement).style.height !== '1px') {
+      grid.removeChild(child);
+    }
+  });
+
+  // Clear all albums, including the scrollbar, when leaving coverflow
+  if (getViewMode() !== 'coverflow') {
+    grid.innerHTML = '';
+  }
+
   renderedIndices.clear();
 }
 

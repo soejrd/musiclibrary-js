@@ -114,8 +114,9 @@ export function getGridElement(): HTMLElement | null {
  * @param mode - The view mode to set ('grid' or 'coverflow').
  */
 export function setViewMode(mode: "grid" | "coverflow"): void {
-  let coverflowClassList = ["coverflow-mode", "py-40","h-auto", "overflow-x-auto", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "snap-x", "snap-mandatory"];
-  let gridClassList = ["grid-mode", "mt-30"];
+  // h-auto is removed from coverflowClassList to allow setting a fixed height.
+  const coverflowClassList = ["coverflow-mode", "py-40", "overflow-x-auto", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "snap-x", "snap-mandatory"];
+  const gridClassList = ["grid-mode", "mt-30"];
   const grid = getGridElement();
   if (!grid) return;
   viewMode = mode;
@@ -129,12 +130,14 @@ export function setViewMode(mode: "grid" | "coverflow"): void {
     }
     grid.classList.remove(...coverflowClassList);
     grid.classList.add(...gridClassList);
-
+    // The height is recalculated in calculateGridLayout, so we don't need to set it here.
   } else {
     grid.classList.remove(...gridClassList);
     grid.classList.add(...coverflowClassList);
     updateCoverflowStyles();
-    grid.style.height = "auto";
+    // Set a fixed height for coverflow mode.
+    // This is necessary because the album items are absolutely positioned and don't contribute to the container's height.
+    grid.style.height = "100vh";
   }
 }
 
