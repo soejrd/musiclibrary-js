@@ -115,7 +115,7 @@ export function getGridElement(): HTMLElement | null {
  */
 export function setViewMode(mode: "grid" | "coverflow"): void {
   // h-auto is removed from coverflowClassList to allow setting a fixed height.
-  const coverflowClassList = ["coverflow-mode", "py-40", "overflow-x-auto", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "snap-x", "snap-mandatory"];
+  const coverflowClassList = ["coverflow-mode", "py-40", "overflow-x-auto", "scroll-smooth", "overflow-y-visible", "whitespace-nowrap", "flex", "items-center", "justify-start", "snap-x", "snap-mandatory"];
   const gridClassList = ["grid-mode", "mt-30"];
   const grid = getGridElement();
   if (!grid) return;
