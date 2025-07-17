@@ -271,7 +271,7 @@ export function updateCoverflowStyles(): void {
         ".text-container"
       ) as HTMLElement | null;
       if (textContainer) {
-        const maxDistanceForText = viewportWidth / 8;
+        const maxDistanceForText = viewportWidth / 16;
         const textOpacity = Math.max(
           0,
           1 - distanceFromCenter / maxDistanceForText

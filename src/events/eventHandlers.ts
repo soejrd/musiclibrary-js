@@ -155,7 +155,7 @@ function createButton(config: {
   const button = document.createElement("button");
   button.id = config.id;
   button.className =
-    "px-2 py-2 text-zinc-500 dark:text-zinc-400 dark:hover:text-white hover:text-black flex cursor-pointer hover:bg-white/30 dark:hover:bg-zinc-950/30 rounded-sm duration-150 ease-out" +
+    "px-2 py-2 text-zinc-500 dark:text-zinc-400 dark:hover:text-white hover:text-black flex cursor-pointer hover:bg-white/30 dark:hover:bg-zinc-950/30 rounded-sm duration-300 ease-out" +
     (config.className ? ` ${config.className}` : "");
 
   const iconSpan = document.createElement("span");
