@@ -2,7 +2,7 @@ import { Album } from "../types/types";
 import { AlbumCard } from "../components/AlbumCard";
 import { getFilteredLibrary } from "../data/albumData";
 import { getGridElement } from "../grid/gridLayout";
-import { clearAlbums } from "@/events/eventHandlers";
+import { clearAlbums } from "../events/eventHandlers";
 
 //controls
 const perspective = 1000;

@@ -6,182 +6,37 @@ import {
 } from "../data/albumData";
 import {
   calculateGridLayout,
+  getGridElement,
+  getViewMode,
   initGrid,
+  setViewMode,
   updateItemSize,
   zoomIn,
   zoomOut,
-  setViewMode,
-  getViewMode,
-  getGridElement
 } from "../grid/gridLayout";
-
+import {
+  clearCoverflowAlbums,
+  renderCoverflowAlbums,
+  updateCoverflowStyles,
+} from "../coverflow/rendering";
 import {
   clearGridAlbums,
   renderGridAlbums,
   updateRenderedAlbums,
 } from "../grid/rendering";
-import {
-  renderCoverflowAlbums,
-  clearCoverflowAlbums,
-  updateCoverflowRenderedAlbums,
-  updateCoverflowStyles,
-} from "../coverflow/rendering";
 
-/**
- * Renders the control buttons dynamically into the controls container.
- */
-function renderControlButtons(): void {
-  const controlsContainer = document.getElementById("controlsContainer");
-  if (!controlsContainer) return;
+// --- Constants ---
+const THEME = {
+  LIGHT: "light",
+  DARK: "dark",
+};
 
-  const buttonConfigs = [
-    {
-      id: "shuffleBtn",
-      icon: "shuffle",
-      className: "controls--shuffle",
-      handler: () => {
-        shuffleLibrary();
-        clearAlbumsBasedOnViewMode();
-        renderAlbumsBasedOnViewMode();
-      },
-    },
-    {
-      id: "zoomOutBtn",
-      icon: "zoom_out",
-      handler: () => {
-        if (getViewMode() === "grid" && zoomOut()) {
-          updateItemSize();
-          calculateGridLayout(getTotalAlbums());
-          updateRenderedAlbums();
-          renderGridAlbums();
-        }
-      },
-    },
-    {
-      id: "zoomInBtn",
-      icon: "zoom_in",
-      handler: () => {
-        if (getViewMode() === "grid" && zoomIn()) {
-          updateItemSize();
-          calculateGridLayout(getTotalAlbums());
-          updateRenderedAlbums();
-          renderGridAlbums();
-        }
-      },
-    },
-    {
-      id: "viewToggleBtn",
-      icon: "view_carousel",
-      handler: () => {
-        const currentMode = getViewMode();
-        const newMode = currentMode === "grid" ? "coverflow" : "grid";
-        setViewMode(newMode);
-        const viewIcon = document.querySelector(
-          "#viewToggleBtn .material-symbols-rounded"
-        );
-        if (viewIcon) {
-          viewIcon.textContent =
-            newMode === "grid" ? "view_carousel" : "grid_view";
-        }
+const VIEW_MODE = {
+  GRID: "grid",
+  COVERFLOW: "coverflow",
+};
 
-        // Handle zoom buttons visibility and position based on view mode
-        const zoomInBtn = document.getElementById("zoomInBtn");
-        const zoomOutBtn = document.getElementById("zoomOutBtn");
-        if (zoomInBtn && zoomOutBtn) {
-          if (newMode === "coverflow") {
-            zoomInBtn.classList.add(
-              "w-0",
-              "opacity-0",
-              "-translate-x-full",
-              "collapse"
-            );
-            zoomOutBtn.classList.add(
-              "w-0",
-              "opacity-0",
-              "translate-x-full",
-              "collapse"
-            );
-            zoomInBtn.classList.remove("px-2");
-            zoomOutBtn.classList.remove("px-2");
-          } else {
-            zoomInBtn.classList.remove(
-              "w-0",
-              "opacity-0",
-              "-translate-x-full",
-              "collapse"
-            );
-            zoomOutBtn.classList.remove(
-              "w-0",
-              "opacity-0",
-              "translate-x-full",
-              "collapse"
-            );
-            zoomInBtn.classList.add("px-2");
-            zoomOutBtn.classList.add("px-2");
-          }
-        }
-
-        clearAlbumsBasedOnViewMode();
-        if (newMode === "grid") {
-          calculateGridLayout(getTotalAlbums());
-        }
-        renderAlbumsBasedOnViewMode();
-        if (newMode === "coverflow") {
-          updateCoverflowStyles();
-        }
-      },
-    },
-    {
-      id: "themeBtn",
-      icon: "light_mode",
-      handler: () => {
-        const htmlElement = document.documentElement;
-        const themeIcon = document.querySelector(
-          "#themeBtn .material-symbols-rounded"
-        );
-        if (htmlElement.classList.contains("dark")) {
-          htmlElement.classList.remove("dark");
-          if (themeIcon) themeIcon.textContent = "dark_mode";
-          localStorage.setItem("theme", "light");
-        } else {
-          htmlElement.classList.add("dark");
-          if (themeIcon) themeIcon.textContent = "light_mode";
-          localStorage.setItem("theme", "dark");
-        }
-      },
-    },
-  ];
-
-  buttonConfigs.forEach((config) => {
-    const button = document.createElement("button");
-    button.id = config.id;
-    button.className =
-      "px-2 py-2 text-zinc-500 dark:text-zinc-400 dark:hover:text-white hover:text-black flex cursor-pointer hover:bg-white/30 dark:hover:bg-zinc-950/30 rounded-sm duration-150 ease-out" +
-      (config.className ? ` ${config.className}` : "");
-    const iconSpan = document.createElement("span");
-    iconSpan.className = "material-symbols-rounded";
-    iconSpan.textContent = config.icon;
-    button.appendChild(iconSpan);
-    if (config.handler) {
-      button.addEventListener("click", config.handler);
-    }
-    controlsContainer.appendChild(button);
-  });
-
-  // Apply saved theme on load
-  const savedTheme = localStorage.getItem("theme");
-  const htmlElement = document.documentElement;
-  const themeIcon = document.querySelector(
-    "#themeBtn .material-symbols-rounded"
-  );
-  if (savedTheme === "light") {
-    htmlElement.classList.remove("dark");
-    if (themeIcon) themeIcon.textContent = "dark_mode";
-  } else {
-    htmlElement.classList.add("dark");
-    if (themeIcon) themeIcon.textContent = "light_mode";
-  }
-}
+// --- Helper Functions ---
 
 /**
  * Debounces a function to prevent it from being called too frequently.
@@ -207,9 +62,9 @@ function debounce<T extends (...args: any[]) => any>(
  */
 function renderAlbumsBasedOnViewMode(): void {
   const viewMode = getViewMode();
-  if (viewMode === "grid") {
+  if (viewMode === VIEW_MODE.GRID) {
     renderGridAlbums();
-  } else if (viewMode === "coverflow") {
+  } else if (viewMode === VIEW_MODE.COVERFLOW) {
     renderCoverflowAlbums();
   }
 }
@@ -219,76 +74,256 @@ function renderAlbumsBasedOnViewMode(): void {
  */
 function clearAlbumsBasedOnViewMode(): void {
   const viewMode = getViewMode();
-  if (viewMode === "grid") {
+  if (viewMode === VIEW_MODE.GRID) {
     clearGridAlbums();
-  } else if (viewMode === "coverflow") {
+  } else if (viewMode === VIEW_MODE.COVERFLOW) {
     clearCoverflowAlbums();
   }
 }
 
 /**
- * Sets up event listeners for the application.
+ * Clears and re-renders all albums, recalculating layout if in grid view.
  */
-export function setupEventListeners(): void {
-  // Handle hover effects for global scrim
-  const grid = document.getElementById("grid");
-  const scrim = document.querySelector(".scrim");
-  if (grid && scrim) {
-    grid.addEventListener("mouseover", (e) => {
-      const target = e.target as HTMLElement;
-      if (
-        getViewMode() === "grid" &&
-        (target.classList.contains("album-card") ||
-          target.closest(".album-card"))
-      ) {
-        scrim.classList.remove("opacity-0");
-        scrim.classList.add("opacity-70");
-        const albumCard = target.classList.contains("album-card")
-          ? target
-          : target.closest(".album-card");
-        if (albumCard) {
-          albumCard.classList.add("z-50");
-        }
-      }
-    });
-
-    grid.addEventListener("mouseout", (e) => {
-      const target = e.target as HTMLElement;
-      if (
-        getViewMode() === "grid" &&
-        (target.classList.contains("album-card") ||
-          target.closest(".album-card"))
-      ) {
-        scrim.classList.remove("opacity-70");
-        scrim.classList.add("opacity-0");
-        const albumCard = target.classList.contains("album-card")
-          ? target
-          : target.closest(".album-card");
-        if (albumCard) {
-          albumCard.classList.remove("z-50");
-        }
-      }
-    });
+function refreshAlbumDisplay(): void {
+  clearAlbumsBasedOnViewMode();
+  if (getViewMode() === VIEW_MODE.GRID) {
+    calculateGridLayout(getTotalAlbums());
   }
+  renderAlbumsBasedOnViewMode();
+}
 
-  // Resize event with debounce
-  window.addEventListener(
-    "resize",
-    debounce(() => {
-      if (getViewMode() === "grid") {
-        updateItemSize();
-        calculateGridLayout(getTotalAlbums());
-        updateRenderedAlbums();
-        renderGridAlbums();
-      }
-    }, 200)
+/**
+ * Redraws the grid layout, e.g., after a resize or zoom change.
+ */
+function redrawGrid(): void {
+  if (getViewMode() !== VIEW_MODE.GRID) return;
+  updateItemSize();
+  calculateGridLayout(getTotalAlbums());
+  updateRenderedAlbums();
+  renderGridAlbums();
+}
+
+/**
+ * Toggles the theme between light and dark mode.
+ */
+function handleTheme(): void {
+  const htmlElement = document.documentElement;
+  const themeIcon = document.querySelector(
+    "#themeBtn .material-symbols-rounded"
+  );
+  const isDark = htmlElement.classList.toggle(THEME.DARK);
+  const newTheme = isDark ? THEME.DARK : THEME.LIGHT;
+
+  if (themeIcon) {
+    themeIcon.textContent = isDark ? "light_mode" : "dark_mode";
+  }
+  localStorage.setItem("theme", newTheme);
+}
+
+/**
+ * Applies the saved theme on initial load.
+ */
+function applySavedTheme(): void {
+  const savedTheme = localStorage.getItem("theme");
+  const htmlElement = document.documentElement;
+  const themeIcon = document.querySelector(
+    "#themeBtn .material-symbols-rounded"
   );
 
-  // Scroll event with requestAnimationFrame for virtual scrolling (only in grid mode)
+  if (savedTheme === THEME.LIGHT) {
+    htmlElement.classList.remove(THEME.DARK);
+    if (themeIcon) themeIcon.textContent = "dark_mode";
+  } else {
+    htmlElement.classList.add(THEME.DARK);
+    if (themeIcon) themeIcon.textContent = "light_mode";
+  }
+}
+
+// --- Control Button Rendering ---
+
+/**
+ * Creates a control button element.
+ * @param config - The configuration for the button.
+ * @returns The created button element.
+ */
+function createButton(config: {
+  id: string;
+  icon: string;
+  className?: string;
+  handler: () => void;
+}): HTMLButtonElement {
+  const button = document.createElement("button");
+  button.id = config.id;
+  button.className =
+    "px-2 py-2 text-zinc-500 dark:text-zinc-400 dark:hover:text-white hover:text-black flex cursor-pointer hover:bg-white/30 dark:hover:bg-zinc-950/30 rounded-sm duration-150 ease-out" +
+    (config.className ? ` ${config.className}` : "");
+
+  const iconSpan = document.createElement("span");
+  iconSpan.className = "material-symbols-rounded";
+  iconSpan.textContent = config.icon;
+
+  button.appendChild(iconSpan);
+  button.addEventListener("click", config.handler);
+
+  return button;
+}
+
+/**
+ * Toggles the visibility of zoom buttons based on the view mode.
+ * @param newMode - The new view mode ('grid' or 'coverflow').
+ */
+function toggleZoomButtonsVisibility(newMode: "grid" | "coverflow"): void {
+  const zoomInBtn = document.getElementById("zoomInBtn");
+  const zoomOutBtn = document.getElementById("zoomOutBtn");
+  if (!zoomInBtn || !zoomOutBtn) return;
+
+  const isCoverflow = newMode === VIEW_MODE.COVERFLOW;
+  const classesToAdd = isCoverflow
+    ? ["w-0", "opacity-0", "collapse"]
+    : ["px-2"];
+  const classesToRemove = isCoverflow
+    ? ["px-2"]
+    : ["w-0", "opacity-0", "collapse"];
+
+  zoomInBtn.classList.add(...classesToAdd);
+  zoomInBtn.classList.remove(...classesToRemove);
+  zoomOutBtn.classList.add(...classesToAdd);
+  zoomOutBtn.classList.remove(...classesToRemove);
+
+  if (isCoverflow) {
+    zoomInBtn.classList.add("-translate-x-full");
+    zoomOutBtn.classList.add("translate-x-full");
+  } else {
+    zoomInBtn.classList.remove("-translate-x-full");
+    zoomOutBtn.classList.remove("translate-x-full");
+  }
+}
+
+/**
+ * Renders the control buttons dynamically into the controls container.
+ */
+function renderControlButtons(): void {
+  const controlsContainer = document.getElementById("controlsContainer");
+  if (!controlsContainer) return;
+
+  const buttonConfigs = [
+    {
+      id: "shuffleBtn",
+      icon: "shuffle",
+      className: "controls--shuffle",
+      handler: () => {
+        shuffleLibrary();
+        refreshAlbumDisplay();
+      },
+    },
+    {
+      id: "zoomOutBtn",
+      icon: "zoom_out",
+      handler: () => {
+        if (getViewMode() === VIEW_MODE.GRID && zoomOut()) {
+          redrawGrid();
+        }
+      },
+    },
+    {
+      id: "zoomInBtn",
+      icon: "zoom_in",
+      handler: () => {
+        if (getViewMode() === VIEW_MODE.GRID && zoomIn()) {
+          redrawGrid();
+        }
+      },
+    },
+    {
+      id: "viewToggleBtn",
+      icon: "view_carousel",
+      handler: () => {
+        const currentMode = getViewMode();
+        const newMode =
+          currentMode === VIEW_MODE.GRID
+            ? VIEW_MODE.COVERFLOW
+            : VIEW_MODE.GRID;
+        setViewMode(newMode as "grid" | "coverflow");
+
+        const viewIcon = document.querySelector(
+          "#viewToggleBtn .material-symbols-rounded"
+        );
+        if (viewIcon) {
+          viewIcon.textContent =
+            newMode === VIEW_MODE.GRID ? "view_carousel" : "grid_view";
+        }
+
+        toggleZoomButtonsVisibility(newMode as "grid" | "coverflow");
+        refreshAlbumDisplay();
+
+        if (newMode === VIEW_MODE.COVERFLOW) {
+          updateCoverflowStyles();
+        }
+      },
+    },
+    {
+      id: "themeBtn",
+      icon: "light_mode",
+      handler: handleTheme,
+    },
+  ];
+
+  const fragment = document.createDocumentFragment();
+  buttonConfigs.forEach((config) => fragment.appendChild(createButton(config)));
+  controlsContainer.appendChild(fragment);
+
+  applySavedTheme();
+}
+
+// --- Event Listener Setup ---
+
+/**
+ * Updates the search input UI (arrow and input position).
+ * @param hasValue - Whether the search input has a value.
+ */
+function updateSearchUI(hasValue: boolean): void {
+  const searchInput = document.getElementById(
+    "searchInput"
+  ) as HTMLInputElement;
+  const arrowBack = document.querySelector(".arrow-back");
+  if (!searchInput || !arrowBack) return;
+
+  if (hasValue) {
+    arrowBack.classList.remove("invisible", "-translate-x-2");
+    arrowBack.classList.add("visible", "translate-x-0");
+    searchInput.classList.remove("-translate-x-9");
+  } else {
+    arrowBack.classList.remove("visible", "translate-x-0");
+    arrowBack.classList.add("invisible", "-translate-x-2");
+    searchInput.classList.add("-translate-x-9");
+  }
+}
+
+function setupGridHoverEffects(): void {
+  const grid = document.getElementById("grid");
+  const scrim = document.querySelector(".scrim");
+  if (!grid || !scrim) return;
+
+  const handleMouseEvent = (e: MouseEvent, isMouseOver: boolean) => {
+    const target = e.target as HTMLElement;
+    const albumCard = target.closest(".album-card");
+    if (getViewMode() === VIEW_MODE.GRID && albumCard) {
+      scrim.classList.toggle("opacity-0", !isMouseOver);
+      scrim.classList.toggle("opacity-70", isMouseOver);
+      albumCard.classList.toggle("z-50", isMouseOver);
+    }
+  };
+
+  grid.addEventListener("mouseover", (e) => handleMouseEvent(e, true));
+  grid.addEventListener("mouseout", (e) => handleMouseEvent(e, false));
+}
+
+function setupScrollListeners(): void {
+  // Virtual scrolling for grid view
   let ticking = false;
   window.addEventListener("scroll", () => {
-    if (getViewMode() === "grid" && !ticking) {
-      requestAnimationFrame(() => {
+    if (getViewMode() === VIEW_MODE.GRID && !ticking) {
+      window.requestAnimationFrame(() => {
         renderGridAlbums();
         ticking = false;
       });
@@ -296,108 +331,76 @@ export function setupEventListeners(): void {
     }
   });
 
-  // Scroll event for coverflow mode to update styles and rendered albums based on visible center album
+  // Style updates for coverflow view
   let coverflowTicking = false;
-  document.getElementById("grid")?.addEventListener("scroll", () => {
-    if (getViewMode() === "coverflow" && !coverflowTicking) {
-      requestAnimationFrame(() => {
+  getGridElement()?.addEventListener("scroll", () => {
+    if (getViewMode() === VIEW_MODE.COVERFLOW && !coverflowTicking) {
+      window.requestAnimationFrame(() => {
         updateCoverflowStyles();
         coverflowTicking = false;
       });
       coverflowTicking = true;
     }
   });
+}
 
-  const searchInput = document.getElementById("searchInput") as HTMLInputElement | null;
+function setupSearchListeners(): void {
+  const searchInput = document.getElementById(
+    "searchInput"
+  ) as HTMLInputElement | null;
+  if (!searchInput) return;
 
-  // Function to handle search input changes
-  const handleSearchInput = debounce((value: string) => {
+  const handleSearch = debounce((value: string) => {
     filterAlbums(value);
-    clearAlbumsBasedOnViewMode();
-    if (getViewMode() === "grid") {
-      calculateGridLayout(getTotalAlbums());
-    }
-    renderAlbumsBasedOnViewMode();
-
-    // Toggle visibility of arrow_back icon based on input content
-    const arrowBack = document.querySelector(".arrow-back");
-    if (searchInput) {
-      if (value.length > 0) {
-        arrowBack?.classList.remove("invisible", "-translate-x-2");
-        arrowBack?.classList.add("visible", "translate-x-0");
-        searchInput.classList.remove("-translate-x-9");
-      } else {
-        arrowBack?.classList.remove("visible", "translate-x-0");
-        arrowBack?.classList.add("invisible", "-translate-x-2");
-        searchInput.classList.add("-translate-x-9");
-      }
-    }
+    refreshAlbumDisplay();
+    updateSearchUI(value.length > 0);
   }, 200);
 
-  // Search input with debounce
-  searchInput?.addEventListener("input", (e: Event) => {
-    const input = e.target as HTMLInputElement;
-    handleSearchInput(input.value);
+  searchInput.addEventListener("input", (e: Event) => {
+    handleSearch((e.target as HTMLInputElement).value);
   });
 
-  // Global keydown listener for search
-  window.addEventListener("keydown", (e: KeyboardEvent) => {
-    if (!searchInput) return;
-
-    // Check if a modifier key (Ctrl, Alt, Meta) is pressed or if it's a function key, etc.
-    if (e.ctrlKey || e.altKey || e.metaKey || e.key.length > 1 && e.key !== "Backspace") {
-      return;
-    }
-
-    // If an input, textarea, or select element is focused, don't interfere
-    if (document.activeElement && (
-      document.activeElement.tagName === 'INPUT' ||
-      document.activeElement.tagName === 'TEXTAREA' ||
-      document.activeElement.tagName === 'SELECT'
-    )) {
-      return;
-    }
-
-    if (e.key === "Backspace") {
-      if (searchInput.value.length > 0) {
-        searchInput.value = searchInput.value.slice(0, -1);
-        handleSearchInput(searchInput.value);
-        e.preventDefault(); // Prevent browser back navigation
-      }
-    } else if (e.key.length === 1) { // Check if it's a single character (printable)
-      if (document.activeElement !== searchInput) {
-        searchInput.focus();
-        searchInput.value = e.key; // Set the first character
-      }
-      // For subsequent characters or if already focused, the browser will add the key
-      // The 'input' event listener will then handle the filtering
-      e.preventDefault(); // Prevent default behavior (e.g., scrolling if spacebar is pressed)
-    }
-  });
-
-  // Arrow back to clear search input
   document.querySelector(".arrow-back")?.addEventListener("click", () => {
-    const searchInput = document.getElementById(
-      "searchInput"
-    ) as HTMLInputElement | null;
-    if (searchInput) {
-      searchInput.value = "";
-      filterAlbums("");
-      clearAlbumsBasedOnViewMode();
-      if (getViewMode() === "grid") {
-        calculateGridLayout(getTotalAlbums());
-      }
-      renderAlbumsBasedOnViewMode();
-
-      // Hide arrow-back and adjust input position
-      const arrowBack = document.querySelector(".arrow-back");
-      arrowBack?.classList.remove("visible", "translate-x-0");
-      arrowBack?.classList.add("invisible", "-translate-x-2");
-      searchInput.classList.add("-translate-x-9");
-    }
+    searchInput.value = "";
+    handleSearch("");
   });
 
-  // Theme handling is now managed in renderControlButtons
+  window.addEventListener("keydown", (e: KeyboardEvent) => {
+    const activeEl = document.activeElement;
+    const isSearchFocused = activeEl === searchInput;
+    const isOtherInputFocused =
+      activeEl &&
+      ["INPUT", "TEXTAREA", "SELECT"].includes(activeEl.tagName) &&
+      !isSearchFocused;
+
+    if (e.ctrlKey || e.altKey || e.metaKey || isOtherInputFocused) {
+      return;
+    }
+
+    const isPrintableKey = e.key.length === 1;
+    const isBackspace = e.key === "Backspace";
+
+    if (!isSearchFocused && (isPrintableKey || isBackspace)) {
+      e.preventDefault();
+      searchInput.focus();
+      if (isBackspace) {
+        searchInput.value = searchInput.value.slice(0, -1);
+      } else {
+        searchInput.value += e.key;
+      }
+      handleSearch(searchInput.value);
+    }
+  });
+}
+
+/**
+ * Sets up event listeners for the application.
+ */
+export function setupEventListeners(): void {
+  setupGridHoverEffects();
+  window.addEventListener("resize", debounce(redrawGrid, 200));
+  setupScrollListeners();
+  setupSearchListeners();
 }
 
 export function clearAlbums(renderedIndices: Set<number>): void {

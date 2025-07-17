@@ -1,8 +1,8 @@
 import { Album } from "../types/types";
-import { AlbumCard } from "@/components/AlbumCard";
+import { AlbumCard } from "../components/AlbumCard";
 import { getFilteredLibrary } from "../data/albumData";
 import { getGridDimensions, getGridElement } from "./gridLayout";
-import { clearAlbums } from "@/events/eventHandlers";
+import { clearAlbums } from "../events/eventHandlers";
 
 
 // A Set to track which indices are currently rendered
