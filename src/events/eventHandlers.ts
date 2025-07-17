@@ -308,22 +308,21 @@ export function setupEventListeners(): void {
     }
   });
 
-  // Search input with debounce
-  document.getElementById("searchInput")?.addEventListener(
-    "input",
-    debounce((e: Event) => {
-      const input = e.target as HTMLInputElement;
-      filterAlbums(input.value);
-      clearAlbumsBasedOnViewMode();
-      if (getViewMode() === "grid") {
-        calculateGridLayout(getTotalAlbums());
-      }
-      renderAlbumsBasedOnViewMode();
+  const searchInput = document.getElementById("searchInput") as HTMLInputElement | null;
 
-      // Toggle visibility of arrow_back icon based on input content
-      const arrowBack = document.querySelector(".arrow-back");
-      const searchInput = input;
-      if (input.value.length > 0) {
+  // Function to handle search input changes
+  const handleSearchInput = debounce((value: string) => {
+    filterAlbums(value);
+    clearAlbumsBasedOnViewMode();
+    if (getViewMode() === "grid") {
+      calculateGridLayout(getTotalAlbums());
+    }
+    renderAlbumsBasedOnViewMode();
+
+    // Toggle visibility of arrow_back icon based on input content
+    const arrowBack = document.querySelector(".arrow-back");
+    if (searchInput) {
+      if (value.length > 0) {
         arrowBack?.classList.remove("invisible", "-translate-x-2");
         arrowBack?.classList.add("visible", "translate-x-0");
         searchInput.classList.remove("-translate-x-9");
@@ -332,8 +331,49 @@ export function setupEventListeners(): void {
         arrowBack?.classList.add("invisible", "-translate-x-2");
         searchInput.classList.add("-translate-x-9");
       }
-    }, 200)
-  );
+    }
+  }, 200);
+
+  // Search input with debounce
+  searchInput?.addEventListener("input", (e: Event) => {
+    const input = e.target as HTMLInputElement;
+    handleSearchInput(input.value);
+  });
+
+  // Global keydown listener for search
+  window.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (!searchInput) return;
+
+    // Check if a modifier key (Ctrl, Alt, Meta) is pressed or if it's a function key, etc.
+    if (e.ctrlKey || e.altKey || e.metaKey || e.key.length > 1 && e.key !== "Backspace") {
+      return;
+    }
+
+    // If an input, textarea, or select element is focused, don't interfere
+    if (document.activeElement && (
+      document.activeElement.tagName === 'INPUT' ||
+      document.activeElement.tagName === 'TEXTAREA' ||
+      document.activeElement.tagName === 'SELECT'
+    )) {
+      return;
+    }
+
+    if (e.key === "Backspace") {
+      if (searchInput.value.length > 0) {
+        searchInput.value = searchInput.value.slice(0, -1);
+        handleSearchInput(searchInput.value);
+        e.preventDefault(); // Prevent browser back navigation
+      }
+    } else if (e.key.length === 1) { // Check if it's a single character (printable)
+      if (document.activeElement !== searchInput) {
+        searchInput.focus();
+        searchInput.value = e.key; // Set the first character
+      }
+      // For subsequent characters or if already focused, the browser will add the key
+      // The 'input' event listener will then handle the filtering
+      e.preventDefault(); // Prevent default behavior (e.g., scrolling if spacebar is pressed)
+    }
+  });
 
   // Arrow back to clear search input
   document.querySelector(".arrow-back")?.addEventListener("click", () => {
