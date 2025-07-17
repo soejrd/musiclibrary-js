@@ -20,13 +20,13 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
   const viewMode = getViewMode();
 
     if (viewMode == "coverflow") {
-      // Layout for coverflow mode: title and artist under the image, visibility handled by CSS for center album
+      // Layout for coverflow mode
       card.innerHTML = `
       <div class="wrapper w-full flex flex-col relative rounded-sm group-hover:scale-105 transition-all duration-200 ease-out overflow-visible">
         <div class="album-image w-full h-auto object-cover flex-shrink-0 relative overflow-visible">
           <img class="w-full object-cover" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
           <img class="album-image--shadow group-hover:opacity-12 group-hover:blur-[64px] w-full object-cover pointer-events-none absolute top-0 left-0 transform -scale-200 transform-origin-center -z-1 opacity-0 transition-all duration-[1s] ease-out" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
-          <div class="bg-zinc-800 h-full w-full object-cover"></div>
+          <div class="bg-zinc-800 h-full w-full object-cover absolute inset-0 -z-1"></div>
         </div>
         <div class="text-container mt-6 flex flex-col opacity-0 transition-opacity duration-100 ease-out">
           <h3 class="text-4xl font-bold dark:text-zinc-100 text-zinc-950 mb-2 truncate">${albumName || 'Unknown Album'}</h3>
@@ -34,19 +34,18 @@ export function AlbumCard({ img: imageUrl, album: albumName, artist: artistName,
         </div>
       </div>
     `;
-    // CSS will handle visibility for center album
   } else {
-    // Layout for grid mode: title and artist on top of the image
+    // Layout for grid mode
     card.innerHTML = `
       <div class="wrapper w-full h-full flex flex-col relative rounded-sm overflow-hidden group-hover:shadow-md transition-all duration-200 ease-out">
-        <div class="album-image w-full h-full object-cover flex-shrink-0">
-          <img class="w-full object-cover" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
-          <div class="bg-zinc-800 h-full w-full object-cover"></div>
+        <div class="album-image w-full h-full object-cover flex-shrink-0 flex justify-center items-center">
+          <img class="w-full object-cover text-xs text-zinc-300 text-center" loading="lazy" src="${imageUrl || ''}" alt="${albumName || 'Album'}">
+          <div class="bg-zinc-800 h-full w-full object-cover absolute inset-0 -z-1 animate-pulse"></div>
         </div>
         <div class="scrim absolute top-0 left-0 w-full h-full bg-linear-to-t from-black to-transparent opacity-0 group-hover:opacity-70 transition-all duration-100 ease-out"></div>
         <div class="p-2 flex flex-col justify-between flex-grow absolute bottom-0 group-hover:opacity-100 opacity-0 translate-y-1 group-hover:translate-y-0 transition-all duration-100 ease-out">
-          <h3 class="font-bold text-zinc-100 mb-1 truncate">${albumName || 'Unknown Album'}</h3>
-          <p class="text-xs text-zinc-300 truncate mb-1">${artistName || 'Unknown Artist'}</p>
+          <h3 class="font-bold text-zinc-100 mb-1">${albumName || 'Unknown Album'}</h3>
+          <p class="text-xs text-zinc-300 mb-1">${artistName || 'Unknown Artist'}</p>
         </div>
       </div>
     `;
