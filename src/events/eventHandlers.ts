@@ -142,33 +142,6 @@ function applySavedTheme(): void {
 // --- Control Button Rendering ---
 
 /**
- * Creates a control button element.
- * @param config - The configuration for the button.
- * @returns The created button element.
- */
-function createButton(config: {
-  id: string;
-  icon: string;
-  className?: string;
-  handler: () => void;
-}): HTMLButtonElement {
-  const button = document.createElement("button");
-  button.id = config.id;
-  button.className =
-    "px-2 py-2 text-zinc-500 dark:text-zinc-400 dark:hover:text-white hover:text-black flex cursor-pointer hover:bg-white/30 dark:hover:bg-zinc-950/30 rounded-sm duration-300 ease-out" +
-    (config.className ? ` ${config.className}` : "");
-
-  const iconSpan = document.createElement("span");
-  iconSpan.className = "material-symbols-rounded";
-  iconSpan.textContent = config.icon;
-
-  button.appendChild(iconSpan);
-  button.addEventListener("click", config.handler);
-
-  return button;
-}
-
-/**
  * Toggles the visibility of zoom buttons based on the view mode.
  * @param newMode - The new view mode ('grid' or 'coverflow').
  */
@@ -199,81 +172,6 @@ function toggleZoomButtonsVisibility(newMode: "grid" | "coverflow"): void {
   }
 }
 
-/**
- * Renders the control buttons dynamically into the controls container.
- */
-function renderControlButtons(): void {
-  const controlsContainer = document.getElementById("controlsContainer");
-  if (!controlsContainer) return;
-
-  const buttonConfigs = [
-    {
-      id: "shuffleBtn",
-      icon: "shuffle",
-      className: "controls--shuffle",
-      handler: () => {
-        shuffleLibrary();
-        refreshAlbumDisplay();
-      },
-    },
-    {
-      id: "zoomOutBtn",
-      icon: "zoom_out",
-      handler: () => {
-        if (getViewMode() === VIEW_MODE.GRID && zoomOut()) {
-          redrawGrid();
-        }
-      },
-    },
-    {
-      id: "zoomInBtn",
-      icon: "zoom_in",
-      handler: () => {
-        if (getViewMode() === VIEW_MODE.GRID && zoomIn()) {
-          redrawGrid();
-        }
-      },
-    },
-    {
-      id: "viewToggleBtn",
-      icon: "view_carousel",
-      handler: () => {
-        const currentMode = getViewMode();
-        const newMode =
-          currentMode === VIEW_MODE.GRID
-            ? VIEW_MODE.COVERFLOW
-            : VIEW_MODE.GRID;
-        setViewMode(newMode as "grid" | "coverflow");
-
-        const viewIcon = document.querySelector(
-          "#viewToggleBtn .material-symbols-rounded"
-        );
-        if (viewIcon) {
-          viewIcon.textContent =
-            newMode === VIEW_MODE.GRID ? "view_carousel" : "grid_view";
-        }
-
-        toggleZoomButtonsVisibility(newMode as "grid" | "coverflow");
-        refreshAlbumDisplay();
-
-        if (newMode === VIEW_MODE.COVERFLOW) {
-          updateCoverflowStyles();
-        }
-      },
-    },
-    {
-      id: "themeBtn",
-      icon: "light_mode",
-      handler: handleTheme,
-    },
-  ];
-
-  const fragment = document.createDocumentFragment();
-  buttonConfigs.forEach((config) => fragment.appendChild(createButton(config)));
-  controlsContainer.appendChild(fragment);
-
-  applySavedTheme();
-}
 
 // --- Event Listener Setup ---
 
@@ -393,6 +291,49 @@ function setupSearchListeners(): void {
   });
 }
 
+function setupControlListeners(): void {
+  document.getElementById("shuffleBtn")?.addEventListener("click", () => {
+    shuffleLibrary();
+    refreshAlbumDisplay();
+  });
+
+  document.getElementById("zoomOutBtn")?.addEventListener("click", () => {
+    if (getViewMode() === VIEW_MODE.GRID && zoomOut()) {
+      redrawGrid();
+    }
+  });
+
+  document.getElementById("zoomInBtn")?.addEventListener("click", () => {
+    if (getViewMode() === VIEW_MODE.GRID && zoomIn()) {
+      redrawGrid();
+    }
+  });
+
+  document.getElementById("viewToggleBtn")?.addEventListener("click", () => {
+    const currentMode = getViewMode();
+    const newMode =
+      currentMode === VIEW_MODE.GRID ? VIEW_MODE.COVERFLOW : VIEW_MODE.GRID;
+    setViewMode(newMode as "grid" | "coverflow");
+
+    const viewIcon = document.querySelector(
+      "#viewToggleBtn .material-symbols-rounded"
+    );
+    if (viewIcon) {
+      viewIcon.textContent =
+        newMode === VIEW_MODE.GRID ? "view_carousel" : "grid_view";
+    }
+
+    toggleZoomButtonsVisibility(newMode as "grid" | "coverflow");
+    refreshAlbumDisplay();
+
+    if (newMode === VIEW_MODE.COVERFLOW) {
+      updateCoverflowStyles();
+    }
+  });
+
+  document.getElementById("themeBtn")?.addEventListener("click", handleTheme);
+}
+
 /**
  * Sets up event listeners for the application.
  */
@@ -401,6 +342,7 @@ export function setupEventListeners(): void {
   window.addEventListener("resize", debounce(redrawGrid, 200));
   setupScrollListeners();
   setupSearchListeners();
+  setupControlListeners();
 }
 
 export function clearAlbums(renderedIndices: Set<number>): void {
@@ -426,16 +368,14 @@ export function clearAlbums(renderedIndices: Set<number>): void {
 
 
 /**
- * Initializes the application on DOM content loaded.
+ * Initializes the application.
  */
-export function initializeApp(): void {
-  document.addEventListener("DOMContentLoaded", async () => {
-    initGrid();
-    await fetchAlbums();
-    shuffleLibrary();
-    calculateGridLayout(getTotalAlbums());
-    renderAlbumsBasedOnViewMode();
-    renderControlButtons();
-    setupEventListeners();
-  });
+export async function initializeApp(): Promise<void> {
+  initGrid();
+  await fetchAlbums();
+  shuffleLibrary();
+  calculateGridLayout(getTotalAlbums());
+  renderAlbumsBasedOnViewMode();
+  setupEventListeners();
+  applySavedTheme();
 }
